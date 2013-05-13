@@ -39,7 +39,7 @@
 * FTP
     * Advantages over HTTP?
 * Bittorrent
-    * ...
+    * From James: *We discussed distributing data over bittorrent, and how you can ensure provenance, reliability etc. Well, if you had the .torrent file contained in a data package type git repository and included an md5sum of the contents, you presumably could use that to verify that the torrented version was correct with the official release. Perhaps data packages (or other metadata formats) could be extended to include a md5sum of the data in the referenced file.*
 
 ##### Hosting Programmes and Platforms
 
