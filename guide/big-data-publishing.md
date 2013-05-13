@@ -61,6 +61,8 @@
 
 \[sharding schemes, optimimum shard sizes for different platforms, impact of sharding schemes etc on processibility]
 
+\[from James: consistency of data across shards; immediate or eventual?]
+
 ##### Compression
 
 \[*Brief overview of the various lossless data compression schemes/agorithms; performance; splittability]
