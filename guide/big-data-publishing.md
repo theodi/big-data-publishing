@@ -59,7 +59,8 @@
 
 ##### Sharding
 
-\[sharding schemes, optimimum shard sizes for different platforms, impact of sharding schemes etc on processibility]
+\[for static dumps...sharding schemes, optimimum shard sizes for different platforms, impact of sharding schemes etc on processibility]
+
 
 ##### Compression
 
@@ -103,3 +104,4 @@
 
 \[*streaming APIs, regular HTTP APIs, your-website-is-your-api*]
 
+\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
