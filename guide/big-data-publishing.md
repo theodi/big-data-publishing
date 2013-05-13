@@ -5,7 +5,8 @@
 
 ## Introduction
 \[*Some intro text here...*]
-\[*What do we mean by Big Data?*]
+
+\[*What do we mean by Big Data? Brief nod to the typical definitions (e.g. 3Vs), but then move on to practical considerations. Emphasise that it's a sliding scale and that the **publication** issues start presenting themselves at an early stage, e.g. as low as 10s or 100s of GB. Contrast big data behind the firewall (where the publication problems may not exist, it may simply be a case of large internal databases) with open publication of large data sets*]
 
 
 
