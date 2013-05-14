@@ -3,15 +3,32 @@
 *Tom Heath, Ulrich Atz, et al.
 *The Open Data Institute
 
+
+## Executive Summary
+
+
 ## Introduction
+
+The notion of *Big Data* has gained significant coverage in the technology press and broader media. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+
+A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought together, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data.
+[... either way the big data is behind the firewall]
+
+
 \[*Some intro text here...*]
 
+\[*What do we mean by Big Data? Brief nod to the typical definitions (e.g. 3Vs), but then move on to practical considerations. Emphasise that it's a sliding scale and that the **publication** issues start presenting themselves at an early stage, e.g. as low as 10s or 100s of GB. Contrast big data behind the firewall (where the publication problems may not exist, it may simply be a case of large internal databases) with open publication of large data sets*]
 
-## Case Studies of Big Data Publication
+
+
+## Case Studies of Big Open Data Publication
 
 * Amazon Public Datasets Programme
 * COINS data
 * DBpedia?
+* Common Crawl?
+* Weather data?
+* LHC???
 
 
 ### What form does your data take?
@@ -47,9 +64,9 @@
     * Amazon Public Data Sets
     * Google equivalent?
 
-* Hosting Platforms
+* Storage/Hosting Platforms
     * OpenStack Storage <http://www.openstack.org/software/openstack-storage/>
-    * Riak Cloud Storage <http://basho.com/riak-cloud-storage/>
+    * Riak Cloud Storage <http://basho.com/riak-cloud-storage/> (has an S3 compatible API, apparently)
 
 * Hosting Services
     * Amazon S3
