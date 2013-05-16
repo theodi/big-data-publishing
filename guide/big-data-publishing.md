@@ -30,6 +30,15 @@ A more meaningful understanding of the concept may be gained by considering the 
 * Weather data?
 * LHC???
 
+* [1000 Genomes data](http://www.1000genomes.org/data#DataAccess) with more than 260 TB. Some sort of FTP hierarchy
+* 80 TB of archived [web crawl data](http://blog.archive.org/2012/10/26/80-terabytes-of-archived-web-crawl-data-available-for-research) available on request
+* [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html) simple download link. "Requirements: 300 GB diskspace"
+* This looks very promising as a [Bittorrent case study](http://www.biotorrents.net/). More info here: <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2854681/>
+
+\[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public]
+\[I find this sectin very important - we should select perhaps 3 cases, which offer something that we can describe.]
+
+
 
 ### What form does your data take?
 
@@ -61,7 +70,7 @@ A more meaningful understanding of the concept may be gained by considering the 
 ##### Hosting Programmes and Platforms
 
 * Hosting Programmes
-    * Amazon Public Data Sets
+    * [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets)
     * Google equivalent?
 
 * Storage/Hosting Platforms
