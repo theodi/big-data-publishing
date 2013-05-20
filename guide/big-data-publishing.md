@@ -1,4 +1,4 @@
-# A Guide to Publishing Big Data
+# A Guide to Publishing Big (Open) Data
 
 *Tom Heath, Ulrich Atz, et al.
 *The Open Data Institute
@@ -9,19 +9,20 @@
 
 ## Introduction
 
-The notion of *Big Data* has gained significant coverage in the technology press and broader media. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+The notion of *Big Data* has gained significant coverage in the technology press and broader media. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
 
-A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought together, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data.
-[... either way the big data is behind the firewall]
+A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought at the same time, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data which is likely smaller in volume.
 
+In either case, data processing is assumed to take place behind the firewall, where it can be transferred across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where data is published in the open for reuse by a wide range of consumers. In such cases, distribution of the data across the Internet presents the first challenge, before any processing can take place. The limitations of network connectivity available for accessing large data sets may mean that a more conservative quantification of Big Data is required when considering publication of 'Big Open Data'. For example, a data volume that may be trivial to transport on an internal network may be impractical to publish on the Web without taking special measures.
 
-\[*Some intro text here...*]
-
-\[*What do we mean by Big Data? Brief nod to the typical definitions (e.g. 3Vs), but then move on to practical considerations. Emphasise that it's a sliding scale and that the **publication** issues start presenting themselves at an early stage, e.g. as low as 10s or 100s of GB. Contrast big data behind the firewall (where the publication problems may not exist, it may simply be a case of large internal databases) with open publication of large data sets*]
-
+This guide is designed to highlight the challenges presented when openly publishing data via the Web (or through other Internet-based protocols) and, where possible, to highlight the measures that can be taken to mitigate these challenges. Crucially, these challenges do not relate simply to volume or velocity of the data published, but to technical, practical and legal factors that may hinder the utility/usability of the data if not addressed.
 
 
 ## Case Studies of Big Open Data Publication
+
+This section presents three case studies of open publication of big data, covering a range of data volumes and publication methods...
+
+\[UA: I find this sectin very important - we should select perhaps 3 cases, which offer something that we can describe.]
 
 * Amazon Public Datasets Programme
 * COINS data
@@ -36,11 +37,11 @@ A more meaningful understanding of the concept may be gained by considering the 
 * This looks very promising as a [Bittorrent case study](http://www.biotorrents.net/). More info here: <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2854681/>
 
 \[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public]
-\[I find this sectin very important - we should select perhaps 3 cases, which offer something that we can describe.]
 
 
+## Understanding Your Data
 
-### What form does your data take?
+As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
 \[*Use this as the lead into different sections on static vs streaming data (need to be clear on where the distinction lies, grey areas between the two etc); mention volume and velocity and how the two inter-relate*]
 
