@@ -9,20 +9,51 @@
 
 ## Introduction
 
-The notion of *Big Data* has gained significant coverage in the technology press and broader media. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+The notion of *Big Data* has gained significant coverage in the technology press and broader media. It is sold to businesses as the next big thing. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
 
 A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought at the same time, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data which is likely smaller in volume.
 
 In either case, data processing is assumed to take place behind the firewall, where it can be transferred across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where data is published in the open for reuse by a wide range of consumers. In such cases, distribution of the data across the Internet presents the first challenge, before any processing can take place. The limitations of network connectivity available for accessing large data sets may mean that a more conservative quantification of Big Data is required when considering publication of 'Big Open Data'. For example, a data volume that may be trivial to transport on an internal network may be impractical to publish on the Web without taking special measures.
+
+\[UA: Some comment on different users, e.g. non-technical audiences]
 
 This guide is designed to highlight the challenges presented when openly publishing data via the Web (or through other Internet-based protocols) and, where possible, to highlight the measures that can be taken to mitigate these challenges. Crucially, these challenges do not relate simply to volume or velocity of the data published, but to technical, practical and legal factors that may hinder the utility/usability of the data if not addressed.
 
 
 ## Case Studies of Big Open Data Publication
 
-This section presents three case studies of open publication of big data, covering a range of data volumes and publication methods...
+We illustrate different ways of publishing data on the web with three current examples:
 
-\[UA: I find this sectin very important - we should select perhaps 3 cases, which offer something that we can describe.]
+1. The first one, [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. XXXX FTP 300 TB +
+2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to virtually all web users.
+3. The third example, [Biotorrent](http://www.biotorrents.net/), employs a more obscure, distributed publication and uses the BitTorrent protocol.
+
+
+
+### 1,000 Genomes
+
+
+### Tiny Images Dataset
+
+
+### BioTorrents
+
+
+
+BioTorrent state three advantages compared to hosting files through FTP or HTTP:
+
+* Using BioTorrents can allow researchers to download large datasets much faster.
+* BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
+* Data can be located on several servers allowing decentralization and availability of the data if one server becomes disabled.
+
+On the other hand, BioTorrents faces the problem that its requires users to download additional software to access torrents (files). Moreover, BitTorrent is often associated with illegale filesharing, which may become a barrier in some institutions. Lastly, a lot of technical questions remain open such as where to upload the torrent and how to communicate this method of publishing.
+
+
+
+----
+\[UA: I also sent the providers an email, so if we get an response, more to come.]
+
+\[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public
 
 * Amazon Public Datasets Programme
 * COINS data
@@ -31,13 +62,7 @@ This section presents three case studies of open publication of big data, coveri
 * Weather data?
 * LHC???
 
-* [1000 Genomes data](http://www.1000genomes.org/data#DataAccess) with more than 260 TB. Some sort of FTP hierarchy
-* 80 TB of archived [web crawl data](http://blog.archive.org/2012/10/26/80-terabytes-of-archived-web-crawl-data-available-for-research) available on request
-* [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html) simple download link. "Requirements: 300 GB diskspace"
-* This looks very promising as a [Bittorrent case study](http://www.biotorrents.net/). More info here: <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2854681/>
-
-\[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public]
-
+]
 
 ## Understanding Your Data
 
