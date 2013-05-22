@@ -109,8 +109,8 @@ On the other hand, a smaller number of larger files may have advantages for cons
 
 How the data may be processed downstream also has a bearing on the optimum file size of partitions. For example, *[Apache Hadoop](http://hadoop.apache.org/) MapReduce* is a widely used framework for large-scale, distributed data processing. Architectural features of the MapReduce framework and underlying HDFS filesystem dictate that storing and processing large numbers of small files is significantly less efficient and less reliable than processing fewer, larger files. These issues are described in more detail in the following articles:
 
-* <http://blog.cloudera.com/blog/2009/02/the-small-files-problem/>
-* <http://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-anti-patterns-465.html>
+* [The Small Files Problem][WhiteHadoopSmallFiles]
+* [Apache Hadoop: Best Practices and Anti-Patterns][YahooHadoopAntiPatterns]
 
 In conclusion, a sensible compromise may be to partition the data into multiple smaller files but publish these alongside larger files that combine many smaller partitions (i.e. using less fine-grained partitioning). Alternatively, larger files may be published alongside sample data so potential consumers can easily inspect the contents.
 
@@ -169,3 +169,9 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 \[*streaming APIs, regular HTTP APIs, your-website-is-your-api*]
 
 \[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
+
+
+## References
+
+[WhiteHadoopSmallFiles]:		http://blog.cloudera.com/blog/2009/02/the-small-files-problem/	"The Small Files Problem"
+[YahooHadoopAntiPatterns]:	http://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-anti-patterns-465.html	"Apache Hadoop: Best Practices and Anti-Patterns"
