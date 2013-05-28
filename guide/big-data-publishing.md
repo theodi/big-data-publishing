@@ -43,6 +43,11 @@ This section presents three case studies of open publication of big data, coveri
 
 As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
+If the data to be published changes rarely, or the intention is to publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing (Relatively) Static Data* may be most suitable. Conversely, if the data to be published changes regularly or is required by consumers in near real-time, the *Publishing Streaming Data* section below will be of most value.
+
+\[*actually break into three top-level sections: publishing many data fragments, publishing data dumps, publishing streaming data*]
+
+
 \[*Use this as the lead into different sections on static vs streaming data (need to be clear on where the distinction lies, grey areas between the two etc); mention volume and velocity and how the two inter-relate*]
 
 \[*question: how much of your data set will consumers actually want to use? How much **variety** do you have, will consumers typically want all of it? Example: a horizontal ecommerce site such as Amazon or Tesco.com; some consumers may want all of the core data (e.g. pricing), but others may only be interested in specific vertical segments.*]
@@ -50,7 +55,7 @@ As the case studies above illustrate, there is great variety in the methods used
 \[*decision point: data dumps or some kind of API for more dynamic data (or both); which would you use when and why? comes back to the question of how much/what proportion of the data your consumers would want and how frequently it changes*]
 
 
-## Publishing Dumps of (Relatively) Static Data
+## Publishing (Relatively) Static Data
 
 
 ### Data Preparation and Distribution Protocols
@@ -63,8 +68,34 @@ As the case studies above illustrate, there is great variety in the methods used
 
 #### Compression
 
-\[*Brief overview of the various lossless data compression schemes/agorithms; performance; splittability]
+In many big data publishing scenarios it is highly desirable to compress the data before publication to reduce the size of files downloaded by consumers. Compression becomes particularly important as the volume of data increases, but does bring a number of disadvantages. For example, consumers must decompress files in order to inspect the data, and compressed files are less likely to be indexed by search engines, thereby limiting the discoverability of data and the potential for onward linking to related data. The remainder of the section briefly reviews various open compression formats that may be used for big data publishing.
 
+Two formats that are widely supported are *Zip* and *Gzip*. \[*do both use the same compression algorithm?*]. The trade-offs between these two formats are discussed in more detail in [this article](http://www.differencebetween.net/technology/difference-between-zip-and-gzip/), but in this context the salient differences between these formats can be summarised as follows:
+
+##### Support for Archives
+
+The Zip format is able to gather together multiple input files into one output archive, compressing each input file individually. By contrast, Gzip is a pure compression format that relies on an external programme such as *Tar* to first collect multiple input files into one archive before compression.
+
+##### Compression Performance
+
+By compressing each file in an archive individually, Zip is unable to exploit redundancy between files in the archive, and therefore typically achieves inferior compression performance compared to Gzip. This performance difference can be significant, but is naturally dependent on there being more than one file in an archive [check this -- do they use the same compression algorithm?] and on the degree of redundancy between files in the archive.
+
+\[*show some indicative stats about the performance of different methods on the same data in one file or split across several*]
+
+##### Individual Files
+
+Conversely, Zip has an advantage when individual files need to be retrieved from an archive, as each can be extracted without requiring the entire contents to be decompressed. In the case of Gzip applied to Tar archives, the Tar programme has a compression-aware mode that can extract specific files from an archive, but in the worst case the entire archive may need to be decompressed before the target file is located \[*double check that this is the case*]. It should be noted that the compression-aware mode in Tar supports multiple compression formats in addition to Gzip, including *Bzip2* and *LZO*.
+
+##### Platform Support
+
+Historically, use of the Zip format has been more prevalent on Windows platforms, while Gzip has a stronger association with Unix-like platforms (e.g. Mac OSX and Linux). In reality, all of these platforms support both compression formats, but users of each may be more familiar with the respective *de facto* standard for their platform and have tools more readily available. As a broad generalisation, consumers of big data are more likely to use Unix-like platforms, and therefore Gzip may be a sensible default, but the downstream usage context should always be considered.
+
+[*Is Zip supported at all by Hadoop?*]
+
+\[*splittability]
+\[*BZ2, LZO?, 7Z(arch)?*]
+
+In summary, the most appropriate compression scheme to adopt will depend on the intended audience, the tooling likely to be used, the nature of the data itself (i.e. it's inherent redundancy), and how it is packaged/partitioned for publication.
 
 
 #### Partitioning/Sharding
@@ -161,7 +192,7 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 #### collaboration-over-data
 
 
-## Publishing Dynamic Data
+## Publishing Streaming Data
 
 \[*clarify that much data is dynamic, but the importance of making this available in near real-time depends on how it will be used and what it will be used for, and practical issues such as scale*]
 
@@ -169,7 +200,7 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 \[*do all the same issues above apply, just in different ways?*]
 
-\[*streaming APIs, regular HTTP APIs, your-website-is-your-api*]
+\[*streaming APIs, regular HTTP APIs, your-website-is-your-api, smaller chunks of data*]
 
 \[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
 
