@@ -60,6 +60,43 @@ As the case studies above illustrate, there is great variety in the methods used
 \[*CSV vs JSON vs XML vs RDFx vs proprietary db dumps vs whatever...*]
 
 
+
+#### Compression
+
+\[*Brief overview of the various lossless data compression schemes/agorithms; performance; splittability]
+
+
+
+#### Partitioning/Sharding
+
+For publication as static dumps, data sets beyond a certain size will likely need to be split up into smaller pieces to aid discovery, distribution, and reuse. This process could be referred to as *partitioning* or *sharding*, with different segments of one logical dataset contained within different files. Various (and multiple) partitioning schemes could be used for the same data set, depending on how the data may be used.
+
+##### Logical Partitioning
+
+Perhaps the most obvious partitioning scheme is to split the data into logical groups, according to how consumers may wish to use it. For example, descriptive product data may be partitioned by product category, while transaction or event data may be partitioned by time period (e.g. daily, weekly, monthly, yearly depending on the data volume).
+
+##### Size-Optimised Partitioning
+
+How the data will be retrieved and processed has an impact on how large each partition should be. On the one hand, a large number of small files published on the Web is desirable, as this enables each partition to be identified by its own URI at a granular level, referenced in other data sources and documents, and easily inspected with common desktop tools (e.g. spreadsheet applications or text editors).
+
+On the other hand, a smaller number of larger files may have advantages for consumers of the data. For example, retrieving many small files over HTTP may incur a cumulative *round-trip time* that significantly and negatively impacts the time taken to download the entire data set.
+
+\[*any considerations here in ease of downloading? depends on tools being used*]
+
+How the data may be processed downstream also has a bearing on the optimum file size of partitions. For example, *[Apache Hadoop](http://hadoop.apache.org/) MapReduce* is a widely used framework for large-scale, distributed data processing. Architectural features of the MapReduce framework and underlying HDFS filesystem dictate that storing and processing large numbers of small files is significantly less efficient and less reliable than processing fewer, larger files. These issues are described in more detail in the following articles:
+
+* [The Small Files Problem][WhiteHadoopSmallFiles]
+* [Apache Hadoop: Best Practices and Anti-Patterns][YahooHadoopAntiPatterns]
+
+In conclusion, a sensible compromise may be to partition the data into multiple smaller files but publish these alongside larger files that combine many smaller partitions (i.e. using less fine-grained partitioning). Alternatively, larger files may be published alongside sample data so potential consumers can easily inspect the contents.
+
+
+##### Processing-Optimised Sharding
+
+\[*revisit default hash partitioner in hadoop; any benefits in particular sharding schemes that may avoid overloading certain nodes if the data is lumpy? is this getting too specific? is it actually possible to anticipate this and provide any general guidance?*]
+
+
+
 #### Distribution Protocols
 
 * HTTP
@@ -89,40 +126,6 @@ As the case studies above illustrate, there is great variety in the methods used
     * Rackspace Cloud
     * *others...*
 
-
-#### Partitioning/Sharding
-
-For publication as static dumps, data sets beyond a certain size will likely need to be split up into smaller pieces to aid discovery, distribution, and reuse. This process could be referred to as *partitioning* or *sharding*, with different segments of one logical dataset contained within different files. Various (and multiple) partitioning schemes could be used for the same data set, depending on how the data may be used.
-
-##### Logical Partitioning
-
-Perhaps the most obvious partitioning scheme is to split the data into logical groups, according to how consumers may wish to use it. For example, descriptive product data may be partitioned by product category, while transaction or event data may be partitioned by time period (e.g. daily, weekly, monthly, yearly depending on the data volume).
-
-##### Size-Optimised Partitioning
-
-How the data will be retrieved and processed has an impact on how large each partition should be. On the one hand, a large number of small files published on the Web is desirable, as this enables each partition to be identified by its own URI at a granular level, referenced in other data sources and documents, and easily inspected with common desktop tools (e.g. spreadsheet applications or text editors).
-
-On the other hand, a smaller number of larger files may have advantages for consumers of the data. For example, retrieving many small files over HTTP may incur a cumulative *round-trip time* that significantly and negatively impacts the time taken to download the entire data set.
-\[*need to sanity check this with a networking expert*]
-
-\[*any considerations here in ease of downloading? depends on tools being used*]
-
-How the data may be processed downstream also has a bearing on the optimum file size of partitions. For example, *[Apache Hadoop](http://hadoop.apache.org/) MapReduce* is a widely used framework for large-scale, distributed data processing. Architectural features of the MapReduce framework and underlying HDFS filesystem dictate that storing and processing large numbers of small files is significantly less efficient and less reliable than processing fewer, larger files. These issues are described in more detail in the following articles:
-
-* [The Small Files Problem][WhiteHadoopSmallFiles]
-* [Apache Hadoop: Best Practices and Anti-Patterns][YahooHadoopAntiPatterns]
-
-In conclusion, a sensible compromise may be to partition the data into multiple smaller files but publish these alongside larger files that combine many smaller partitions (i.e. using less fine-grained partitioning). Alternatively, larger files may be published alongside sample data so potential consumers can easily inspect the contents.
-
-
-##### Processing-Optimised Sharding
-
-\[*revisit default hash partitioner in hadoop; any benefits in particular sharding schemes that may avoid overloading certain nodes if the data is lumpy? is this getting too specific? is it actually possible to anticipate this and provide any general guidance?*]
-
-
-#### Compression
-
-\[*Brief overview of the various lossless data compression schemes/agorithms; performance; splittability]
 
 
 #### Headers
