@@ -45,8 +45,6 @@ As the case studies above illustrate, there is great variety in the methods used
 
 If the data to be published changes rarely, or the intention is to publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing (Relatively) Static Data* may be most suitable. Conversely, if the data to be published changes regularly or is required by consumers in near real-time, the *Publishing Streaming Data* section below will be of most value.
 
-\[*actually break into three top-level sections: publishing many data fragments, publishing data dumps, publishing streaming data*]
-
 
 \[*Use this as the lead into different sections on static vs streaming data (need to be clear on where the distinction lies, grey areas between the two etc); mention volume and velocity and how the two inter-relate*]
 
@@ -55,15 +53,20 @@ If the data to be published changes rarely, or the intention is to publish stati
 \[*decision point: data dumps or some kind of API for more dynamic data (or both); which would you use when and why? comes back to the question of how much/what proportion of the data your consumers would want and how frequently it changes*]
 
 
-## Publishing (Relatively) Static Data
+## Publishing Many Small Data Fragments
 
-
-### Data Preparation and Distribution Protocols
+### Data Preparation
 
 #### File Formats
 
 \[*CSV vs JSON vs XML vs RDFx vs proprietary db dumps vs whatever...*]
 
+
+
+## Publishing Data Dumps
+
+
+### Data Preparation and Distribution Protocols
 
 
 #### Compression
