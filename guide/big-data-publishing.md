@@ -43,21 +43,23 @@ This section presents three case studies of open publication of big data, coveri
 
 As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
-If the data to be published changes rarely, or the intention is to publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing (Relatively) Static Data* may be most suitable. Conversely, if the data to be published changes regularly or is required by consumers in near real-time, the *Publishing Streaming Data* section below will be of most value.
-
-
-\[*Use this as the lead into different sections on static vs streaming data (need to be clear on where the distinction lies, grey areas between the two etc); mention volume and velocity and how the two inter-relate*]
-
-\[*question: how much of your data set will consumers actually want to use? How much **variety** do you have, will consumers typically want all of it? Example: a horizontal ecommerce site such as Amazon or Tesco.com; some consumers may want all of the core data (e.g. pricing), but others may only be interested in specific vertical segments.*]
-	
-\[*decision point: data dumps or some kind of API for more dynamic data (or both); which would you use when and why? comes back to the question of how much/what proportion of the data your consumers would want and how frequently it changes*]
+If the data to be published changes rarely, or the intention is to publish static, periodic snapshots of the data, then the data dump techniques described in the section below on *Publishing Data Dumps* will be most suitable. Conversely, if the data to be published has great *variety* or *velocity*, changes regularly, or is required by consumers in near real-time, the *Publishing Many Small Data Fragments* and *Publishing Streaming Data* section below will likely be of greatest value.
 
 
 ## Publishing Many Small Data Fragments
 
-### Data Preparation
+\[*question: how much of your data set will consumers actually want to use? How much **variety** do you have, will consumers typically want all of it? Example: a horizontal ecommerce site such as Amazon or Tesco.com; some consumers may want all of the core data (e.g. pricing), but others may only be interested in specific vertical segments.*]
 
-#### File Formats
+\[*decision point: data dumps or some kind of API for more dynamic data (or both); which would you use when and why? comes back to the question of how much/what proportion of the data your consumers would want and how frequently it changes*]
+
+
+### APIs and Web sites
+
+\[*e.g. high volume streaming data; lower volume but frequent updates; large data sets where consumers may only want a specific slice; regular HTTP APIs, your-website-is-your-api, smaller chunks of data*]
+
+\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
+
+### File Formats
 
 \[*CSV vs JSON vs XML vs RDFx vs proprietary db dumps vs whatever...*]
 
@@ -182,13 +184,9 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 \[*clarify that much data is dynamic, but the importance of making this available in near real-time depends on how it will be used and what it will be used for, and practical issues such as scale*]
 
-\[*e.g. high volume streaming data; lower volume but frequent updates; large data sets where consumers may only want a specific slice*]
+\[*streaming APIs*]
 
 \[*do all the same issues above apply, just in different ways?*]
-
-\[*streaming APIs, regular HTTP APIs, your-website-is-your-api, smaller chunks of data*]
-
-\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
 
 
 ## Metadata Publishing
