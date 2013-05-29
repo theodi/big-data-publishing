@@ -66,30 +66,27 @@ If the data to be published changes rarely, or the intention is to publish stati
 ## Publishing Data Dumps
 
 
-### Data Preparation and Distribution Protocols
-
-
-#### Compression
+### Compression
 
 In many big data publishing scenarios it is highly desirable to compress the data before publication to reduce the size of files downloaded by consumers. Compression becomes particularly important as the volume of data increases, but does bring a number of disadvantages. For example, consumers must decompress files in order to inspect the data, and compressed files are less likely to be indexed by search engines, thereby limiting the discoverability of data and the potential for onward linking to related data. The remainder of the section briefly reviews various open compression formats that may be used for big data publishing.
 
 Two formats that are widely supported are *Zip* and *Gzip*. \[*do both use the same compression algorithm?*]. The trade-offs between these two formats are discussed in more detail in [this article](http://www.differencebetween.net/technology/difference-between-zip-and-gzip/), but in this context the salient differences between these formats can be summarised as follows:
 
-##### Support for Archives
+#### Support for Archives
 
 The Zip format is able to gather together multiple input files into one output archive, compressing each input file individually. By contrast, Gzip is a pure compression format that relies on an external programme such as *Tar* to first collect multiple input files into one archive before compression.
 
-##### Compression Performance
+#### Compression Performance
 
 By compressing each file in an archive individually, Zip is unable to exploit redundancy between files in the archive, and therefore typically achieves inferior compression performance compared to Gzip. This performance difference can be significant, but is naturally dependent on there being more than one file in an archive [check this -- do they use the same compression algorithm?] and on the degree of redundancy between files in the archive.
 
 \[*show some indicative stats about the performance of different methods on the same data in one file or split across several*]
 
-##### Individual Files
+#### Individual Files
 
 Conversely, Zip has an advantage when individual files need to be retrieved from an archive, as each can be extracted without requiring the entire contents to be decompressed. In the case of Gzip applied to Tar archives, the Tar programme has a compression-aware mode that can extract specific files from an archive, but in the worst case the entire archive may need to be decompressed before the target file is located \[*double check that this is the case*]. It should be noted that the compression-aware mode in Tar supports multiple compression formats in addition to Gzip, including *Bzip2* and *LZO*.
 
-##### Platform Support
+#### Platform Support
 
 Historically, use of the Zip format has been more prevalent on Windows platforms, while Gzip has a stronger association with Unix-like platforms (e.g. Mac OSX and Linux). In reality, all of these platforms support both compression formats, but users of each may be more familiar with the respective *de facto* standard for their platform and have tools more readily available. As a broad generalisation, consumers of big data are more likely to use Unix-like platforms, and therefore Gzip may be a sensible default, but the downstream usage context should always be considered.
 
@@ -101,15 +98,15 @@ Historically, use of the Zip format has been more prevalent on Windows platforms
 In summary, the most appropriate compression scheme to adopt will depend on the intended audience, the tooling likely to be used, the nature of the data itself (i.e. it's inherent redundancy), and how it is packaged/partitioned for publication.
 
 
-#### Partitioning/Sharding
+### Partitioning/Sharding
 
 For publication as static dumps, data sets beyond a certain size will likely need to be split up into smaller pieces to aid discovery, distribution, and reuse. This process could be referred to as *partitioning* or *sharding*, with different segments of one logical dataset contained within different files. Various (and multiple) partitioning schemes could be used for the same data set, depending on how the data may be used.
 
-##### Logical Partitioning
+#### Logical Partitioning
 
 Perhaps the most obvious partitioning scheme is to split the data into logical groups, according to how consumers may wish to use it. For example, descriptive product data may be partitioned by product category, while transaction or event data may be partitioned by time period (e.g. daily, weekly, monthly, yearly depending on the data volume).
 
-##### Size-Optimised Partitioning
+#### Size-Optimised Partitioning
 
 How the data will be retrieved and processed has an impact on how large each partition should be. On the one hand, a large number of small files published on the Web is desirable, as this enables each partition to be identified by its own URI at a granular level, referenced in other data sources and documents, and easily inspected with common desktop tools (e.g. spreadsheet applications or text editors).
 
@@ -125,13 +122,13 @@ How the data may be processed downstream also has a bearing on the optimum file 
 In conclusion, a sensible compromise may be to partition the data into multiple smaller files but publish these alongside larger files that combine many smaller partitions (i.e. using less fine-grained partitioning). Alternatively, larger files may be published alongside sample data so potential consumers can easily inspect the contents.
 
 
-##### Processing-Optimised Sharding
+#### Processing-Optimised Sharding
 
 \[*revisit default hash partitioner in hadoop; any benefits in particular sharding schemes that may avoid overloading certain nodes if the data is lumpy? is this getting too specific? is it actually possible to anticipate this and provide any general guidance?*]
 
 
 
-#### Distribution Protocols
+### Distribution Protocols
 
 * HTTP
     * Tools
@@ -145,7 +142,7 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 * Bittorrent
     * From James: *We discussed distributing data over bittorrent, and how you can ensure provenance, reliability etc. Well, if you had the .torrent file contained in a data package type git repository and included an md5sum of the contents, you presumably could use that to verify that the torrented version was correct with the official release. Perhaps data packages (or other metadata formats) could be extended to include a md5sum of the data in the referenced file.*
 
-#### Hosting Programmes and Platforms
+### Hosting Programmes and Platforms
 
 * Hosting Programmes
     * [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets)
@@ -162,12 +159,12 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 
 
-#### Headers
+### Headers
 
 \[*other HTTP headers that should be used/sent with the data?*]
 \[*should also cover content types*]
 
-#### Importability
+### Importability
 
 \[*Generic discussion/overview of different formats and how they impact on importability*]
 
@@ -176,23 +173,9 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 \[*Object vs Block storage in e.g. Amazon EC2/EMR/S3; ease of mounting block storage from nodes in a cluster vs pulling down from object storage; compare this to disk requirements on each node; what is the optimum approach in different settings]
 
 
-#### Costs
+### Costs
 
 
-
-### Metadata Publishing
-
-#### licensing
-
-#### provenance
-
-#### referencing-and-linking
-
-#### update frequency
-
-### collaboration
-
-#### collaboration-over-data
 
 
 ## Publishing Streaming Data
@@ -206,6 +189,28 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 \[*streaming APIs, regular HTTP APIs, your-website-is-your-api, smaller chunks of data*]
 
 \[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
+
+
+## Metadata Publishing
+
+### licensing
+
+### provenance
+
+### referencing-and-linking
+
+### update frequency
+
+## Collaboration
+
+### collaboration-over-data
+
+\[*need to remind ourselves what we want to say here*]
+
+
+## Acknowledgements
+
+\[*acknowledge people here who have helped*]
 
 
 ## References
