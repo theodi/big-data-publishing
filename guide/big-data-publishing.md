@@ -233,18 +233,27 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 ### Hosting Programmes and Platforms
 
-* Hosting Programmes
-    * [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets)
-    * Google equivalent?
+#### Hosting Programmes
 
-* Storage/Hosting Platforms
-    * OpenStack Storage <http://www.openstack.org/software/openstack-storage/>
-    * Riak Cloud Storage <http://basho.com/riak-cloud-storage/> (has an S3 compatible API, apparently)
+Probably the most well-known option for free hosting of open data sets is the [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets) programme. This has obvious cost benefits for data owners/publishers, but also brings advantages to consumers as the data sets are readily accessible within the Amazon EC2 cloud computing infrastructure, either as block storage snapshots that can be instantiated and attached to virtual machines in the Amazon cloud environment or as files within the S3 file storage service. This reduces the need for consumers to download the data to local computing infrastructure before it can be used/analysed. Data sets hosted under this programme are typically in the 1GB to 1TB range, and publishers must have the rights to make the data publicly available.
 
-* Hosting Services
-    * Amazon S3
-    * Rackspace Cloud
-    * *others...*
+\[*should we also cover the Google Public Datasets programme? not as open or comprehensive from what I can tell*]
+
+#### Hosting Services
+
+If you want to pay for hosting and publishing of large data sets, the options include the following:
+
+* Amazon S3...
+* Rackspace Cloud...
+* [others...?]
+
+#### *Storage/Hosting Platforms
+
+Alternatively, if you would like host and publish data using similar services but on your own infrastructure, a number of options are available:
+
+* OpenStack Storage <http://www.openstack.org/software/openstack-storage/>
+* Riak Cloud Storage <http://basho.com/riak-cloud-storage/> (has an S3 compatible API, apparently)
+* Ceph
 
 
 
