@@ -43,25 +43,36 @@ This section presents three case studies of open publication of big data, coveri
 
 As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
-If the data to be published changes rarely, or the intention is to publish static, periodic snapshots of the data, then the data dump techniques described in the section below on *Publishing Data Dumps* will be most suitable. Conversely, if the data to be published has great *variety* or *velocity*, changes regularly, or is required by consumers in near real-time, the *Publishing Many Small Data Fragments* and *Publishing Streaming Data* section below will likely be of greatest value.
+If the data to be published changes rarely, or the intention is to simply publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing Data Dumps* will be most suitable. Conversely, if the data to be published has great *variety*, changes regularly (*velocity*), or is required by consumers in near real-time, the *Publishing Many Small Data Fragments* and *Publishing Streaming Data* section below will likely be of greatest value.
 
 
-## Publishing Many Small Data Fragments
+## Publishing Big Open Data in Small Fragments
 
-\[*question: how much of your data set will consumers actually want to use? How much **variety** do you have, will consumers typically want all of it? Example: a horizontal ecommerce site such as Amazon or Tesco.com; some consumers may want all of the core data (e.g. pricing), but others may only be interested in specific vertical segments.*]
+In many cases, publishing large data dumps alone is undesirable, as this may limit the usability of the data for downstream consumers. For example, consumers may wish to:
 
-\[*decision point: data dumps or some kind of API for more dynamic data (or both); which would you use when and why? comes back to the question of how much/what proportion of the data your consumers would want and how frequently it changes*]
+* inspect portions of the data before gathering more
+* download only a portion of the data; the portion required may not be easly predicted and may vary between consumers, making it hard to cater for this requirement using data dumps (see also the section on *Partitioning* below)
+* regularly reharvest sub-sets of the data that change frequently (i.e. high velocity data)
+
+To give an example, horizontal e-commerce sites such as Amazon.com or Tesco.com may have a wide variety of data, such as product information across multiple vertical segments, product reviews, pricing information, and stock levels. Each of these may change at a different rate, while individual downstream consumers may want access to different sub-sets of the data.
+
+This diversity in the dynamics of the data, and in consumer requirements, makes periodic data dumps unsuitable for any applications that rely on prompt access to the most recent data. Therefore, in addition to data dumps, it is appropriate to consider publishing Big Open Data in smaller fragments via a conventional Web site or Web API.
 
 
-### APIs and Web sites
+### Web APIs and Web sites
 
-\[*e.g. high volume streaming data; lower volume but frequent updates; large data sets where consumers may only want a specific slice; regular HTTP APIs, your-website-is-your-api, smaller chunks of data*]
+Web APIs (Application Programming Interfaces) "provide simple query access to structured data over the HTTP protocol" [Linked Data: Evolving the Web into a Global Data Space][LDBook]. Deploying a Web API can enable consumers to access smaller fragments of an otherwise very large data set, and vary how the data is retrieved according to the nature of the data itself.
 
-\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
+While many Web APIs are deployed in parallel to but separately from a conventional Web site, there is a school of thought that argues that "your Web site is your API" [ref?]. The essence of this argument is that the data should be deployed alongside conventional Web content, i.e. as part of the same site.
+
+A number of methods exist to enable this data publication pattern. For example, RDFa [ref] allows data to be embedded within HTML documents, while data in other formats may be published in separate files alongside HTML documents that present the data for human users.
+
 
 ### File Formats
 
 \[*CSV vs JSON vs XML vs RDFx vs proprietary db dumps vs whatever...*]
+
+\[*block robots using robots.txt? what are the hosting/resource requirements of this?*]
 
 
 
@@ -186,6 +197,8 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 \[*streaming APIs*]
 
+\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
+
 \[*do all the same issues above apply, just in different ways?*]
 
 
@@ -215,3 +228,4 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 [WhiteHadoopSmallFiles]:		http://blog.cloudera.com/blog/2009/02/the-small-files-problem/	"The Small Files Problem"
 [YahooHadoopAntiPatterns]:	http://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-anti-patterns-465.html	"Apache Hadoop: Best Practices and Anti-Patterns"
+[LDBook]:http://linkeddatabook.com/editions/1.0/#htoc4 "Linked Data: Evolving the Web into a Global Data Space"
