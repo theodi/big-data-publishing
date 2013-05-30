@@ -42,20 +42,11 @@ The 1,000 Genome project provides a resource on human genetic variation by seque
 
 Distributing the data poses several technical challenges:
 
-###### 1. Discovering parts of the data
-Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. 
+1. **Discovering parts of the data**: Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data.
 
-The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data.
+2. **Downloading the whole data**: Some \[UA: all?] TCP based protocols such as FTP do not scale well. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success. At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity.
 
-
-###### 2. Downloading the whole data
-
-Some \[UA: all?] TCP based protocols such as FTP do not scale well. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success.
-
-At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity.
-
-
-#### In conclusion
+#### Conclusion
 The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
 
 Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public MySQL Instance and a mirror in the Amazon Simple Storage Service (S3).
@@ -84,29 +75,30 @@ Providing the data via a simple download link may be tempting because it seems e
 \[UA: More on these shortcomings]
 
 
-
 ### [BioTorrents](id:biotorrents)
 
 BioTorrents allows scientists to share data with the [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) peer-to-peer file sharing protocol. They provide a platform where all data is open-access and discoverable. At the time of writing the site counts 1,851 registered users and 120 data sets. The project is described in a [research article](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071). \[UA: Good read for more on bittorrent]
 
 BioTorrents contains multiple features, including keyword searching, category browsing, RSS feeds, torrent comments and a discussion forum. The source code for BioTorrents is published on [GitHub](https://github.com/mlangill/biotorrents/).
 
-###### Sharing data with BioTorrents
+#### Sharing data with BioTorrents
 
 According to the authors sharing data on BioTorrents is a simple three step process:
 
  1. The user creates a torrent file on their personal computer. This assumes they already have a BitTorrent client installed.
  2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
  3. The user shares the data by continuously running a BitTorrent client on their computer/server.
- 
-###### Advantages of using BitTorrent
+
+\[*TH: we should break out the generic bits here related to advantages and disadvantages and move them into the section below on Distribution Protocols*]
+
+#### Advantages of using BitTorrent
 
 * Compared to hosting files through FTP or HTTP, the BitTorrent protocol excels when data sets are distributed among many users. Especially with large files the bandwidth requirements spread across all computers which seed and actively download the data. This may also yield much faster download rates. 
 * BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
 * Data published with the BitTorrent protocol can be decentralised and is still available even if one server becomes disabled.
 
 
-###### Disadvantages of using BitTorrent
+#### Disadvantages of using BitTorrent
 
 * BioTorrents faces the problem that it requires users to download additional software to access torrents (files and data). 
 * Moreover, BitTorrent is often associated with illegal file-sharing, which may become a barrier in some institutions. 
@@ -219,17 +211,21 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 ### Distribution Protocols
 
-* HTTP
-    * Tools
-        * e.g. talk here about things like wget that are nicer than a browser
-    * Factors to consider:
-        * Resumability
-        * Throttling
-* FTP
-    * Advantages over HTTP?
+
+
+| Protocol	| Technical Skills Required 	| Resumability 	| Throttling 	|
+|-----------------|-----------------------------------|-----------------|-----------------|
+| HTTP		| Low				|		|		|
+| FTP		| Medium				|		|		|
+| Rsync		| High				|		|		|
+| BitTorrent 	| Medium				|		|		|
+
+
+* HTTP: talk here about things like wget that are nicer than a browser
+* FTP: Advantages over HTTP?
 * Rsync
 * Bittorrent
-    * From James: *We discussed distributing data over bittorrent, and how you can ensure provenance, reliability etc. Well, if you had the .torrent file contained in a data package type git repository and included an md5sum of the contents, you presumably could use that to verify that the torrented version was correct with the official release. Perhaps data packages (or other metadata formats) could be extended to include a md5sum of the data in the referenced file.*
+    \[* From James: *We discussed distributing data over bittorrent, and how you can ensure provenance, reliability etc. Well, if you had the .torrent file contained in a data package type git repository and included an md5sum of the contents, you presumably could use that to verify that the torrented version was correct with the official release. Perhaps data packages (or other metadata formats) could be extended to include a md5sum of the data in the referenced file.*]
 
 ### Hosting Programmes and Platforms
 
@@ -241,15 +237,15 @@ Probably the most well-known option for free hosting of open data sets is the [A
 
 #### Hosting Services
 
-If you want to pay for hosting and publishing of large data sets, the options include the following:
+\[*If you want to pay for hosting and publishing of large data sets, the options include the following:*]
 
 * Amazon S3...
 * Rackspace Cloud...
 * [others...?]
 
-#### *Storage/Hosting Platforms
+#### Storage/Hosting Platforms
 
-Alternatively, if you would like host and publish data using similar services but on your own infrastructure, a number of options are available:
+\[*Alternatively, if you would like host and publish data using similar services but on your own infrastructure, a number of options are available:*]
 
 * OpenStack Storage <http://www.openstack.org/software/openstack-storage/>
 * Riak Cloud Storage <http://basho.com/riak-cloud-storage/> (has an S3 compatible API, apparently)
@@ -262,6 +258,7 @@ Alternatively, if you would like host and publish data using similar services bu
 \[*other HTTP headers that should be used/sent with the data?*]
 \[*should also cover content types*]
 
+
 ### Importability
 
 \[*Generic discussion/overview of different formats and how they impact on importability*]
@@ -273,7 +270,7 @@ Alternatively, if you would like host and publish data using similar services bu
 
 ### Costs
 
-
+\[*@ulrich: do you want to work out some sample costs for different sizes of data for S3 and Rackspace Cloud, e.g. 100GB, 1TB, 10TB, 100TB?*]
 
 
 ## Publishing Streaming Data
@@ -289,15 +286,30 @@ Alternatively, if you would like host and publish data using similar services bu
 
 ## Audiences 
 
+\[*TH: what did we want to say here?*]
+
+
 ## Metadata Publishing
 
 ### licensing
 
+\[*relatively understood problem for small fragments and streaming data, dumps likely to be more ad-hoc. what is best practice? bundle a license statement/document in the root of every dump archive?*]
+
 ### provenance
+
+\[*same as above re licensing, but make sure it's also in machine-readable form?*]
+
+
+### update frequency
+
+\[*follow similar approaches to documenting this as for licensing and provenance*]
 
 ### referencing-and-linking
 
-### update frequency
+\[*relate this back to the section on RDF as a data model*]
+
+
+
 
 ## Collaboration
 
