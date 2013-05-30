@@ -24,13 +24,38 @@ This guide is designed to highlight the challenges presented when openly publish
 
 We illustrate different ways of publishing data on the web with three current examples:
 
-1. The first one, [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. XXXX FTP 300 TB +
-2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to virtually all web users.
-3. The third example, [Biotorrent](http://www.biotorrents.net/), employs a more obscure, distributed publication and uses the BitTorrent protocol.
+1. The first one, [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. 
+2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
+3. The third example, [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
 
 
 
 ### 1,000 Genomes
+#### Description
+
+The 1,000 Genome project provides a resource on human genetic variation by sequencing the genomes of a large number of people. Details of the project are published in an [article in Nature Methods](The 1000 Genomes Project: data management and community access): "In March 2012 the still-growing project resources include more than 260 terabytes of data in more than 250,000 publicly accessible files." The Wellcome Trust alone supports the project with an amount above £5 million. 
+
+Distributing the data poses several technical challenges:
+
+###### 1. Discovering parts of the data
+Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. 
+
+The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data.
+
+
+###### 2. Downloading the whole data
+
+Some \[UA: all?] TCP based protocols such as FTP do not scale well. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success.
+
+At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity.
+
+
+#### In conclusion
+The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
+
+Users can download the whole data set with a fast version of the FTP protocol. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public Mysql Instance and a mirror in the Amazon Simple Storage Service (S3).
+
+Additional support is manifold. Announcements are made available via RSS, Twitter and also via an email list. The website [1,000 Genomes](http://www.1000genomes.org) hosts all links and information about the data and the project. 
 
 
 ### Tiny Images Dataset
@@ -50,19 +75,8 @@ On the other hand, BioTorrents faces the problem that its requires users to down
 
 
 
-----
-\[UA: I also sent the providers an email, so if we get an response, more to come.]
 
-\[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public
 
-* Amazon Public Datasets Programme
-* COINS data
-* DBpedia?
-* Common Crawl?
-* Weather data?
-* LHC???
-
-]
 
 ## Understanding Your Data
 
