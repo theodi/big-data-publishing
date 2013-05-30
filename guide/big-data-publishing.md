@@ -28,9 +28,14 @@ We illustrate different ways of publishing data on the web with three current ex
 2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
 3. The third example, [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
 
+\[UA] Test
+
+- [Case Study 1](#1000genomes)
+- [Case Study 2](#tinyimg)
+- [Case Study 3](#biotorrents)
 
 
-### 1,000 Genomes
+### [1,000 Genomes](id:1000genomes)
 #### Description
 
 The 1,000 Genome project provides a resource on human genetic variation by sequencing the genomes of a large number of people. Details of the project are published in an [article in Nature Methods](The 1000 Genomes Project: data management and community access): "In March 2012 the still-growing project resources include more than 260 terabytes of data in more than 250,000 publicly accessible files." The Wellcome Trust alone supports the project with an amount above £5 million. 
@@ -53,28 +58,45 @@ At least two mirror download sites provide access simultaneously and efficiently
 #### In conclusion
 The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
 
-Users can download the whole data set with a fast version of the FTP protocol. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public Mysql Instance and a mirror in the Amazon Simple Storage Service (S3).
+Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public Mysql Instance and a mirror in the Amazon Simple Storage Service (S3).
 
 Additional support is manifold. Announcements are made available via RSS, Twitter and also via an email list. The website [1,000 Genomes](http://www.1000genomes.org) hosts all links and information about the data and the project. 
 
 
-### Tiny Images Dataset
+### [Tiny Images Dataset](id:tinyimg)
+The Tiny Images data set consists of 79,302,017 images stored in the form of large binary files. They appear in an [academic paper](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4531741&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4531741) on scene recognition from 2008.
+
+In total there are 5 files that can be downloaded via a download link on the site:
+
+  - Image binary (227 Gb)
+  - Metadata binary (57 Gb)
+  - Gist binary (114 Gb)
+  - Index data (7 Mb)
+  - Matlab Tiny Images toolbox (150 Kb) 
+
+Publishing the data in such a way my be easy from a publisher's perspective but comes with a number of shortcomings: 
+
+1. It is not possible to download parts of the data.
+2. It seems, moreover, not possible to explore a sample of the data to see whether it suits a user's needs.
+3. What happens if a user's internet connection is interrupted?
+4. Support and documentation is very limited.
 
 
-### BioTorrents
+
+
+### [BioTorrents](id:biotorrents)
 
 
 
-BioTorrent state three advantages compared to hosting files through FTP or HTTP:
+BioTorrent see three advantages compared to hosting files through FTP or HTTP:
 
-* Using BioTorrents can allow researchers to download large datasets much faster.
+* The BitTorrent protocol excels when the data is (very) large and multiple computers can seed (e.g. host) the data. Therefore, popular datasets that are often downloaded many times would see the largest benefit as bandwidth requirements are distributed across all computers seeding and actively downloading the data.
 * BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
 * Data can be located on several servers allowing decentralization and availability of the data if one server becomes disabled.
 
 On the other hand, BioTorrents faces the problem that its requires users to download additional software to access torrents (files). Moreover, BitTorrent is often associated with illegale filesharing, which may become a barrier in some institutions. Lastly, a lot of technical questions remain open such as where to upload the torrent and how to communicate this method of publishing.
 
-
-
+The BitTorrent protocol excels when the data is (very) large and multiple computers can seed (e.g. host) the data. Therefore, popular datasets that are often downloaded many times would see the largest benefit as bandwidth requirements are distributed across all computers seeding and actively downloading the data.
 
 
 
