@@ -9,34 +9,110 @@
 
 ## Introduction
 
-The notion of *Big Data* has gained significant coverage in the technology press and broader media. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+The notion of *Big Data* has gained significant coverage in the technology press and broader media. It is sold to businesses as the next big thing. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
 
 A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought at the same time, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data which is likely smaller in volume.
 
 In either case, data processing is assumed to take place behind the firewall, where it can be transferred across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where data is published in the open for reuse by a wide range of consumers. In such cases, distribution of the data across the Internet presents the first challenge, before any processing can take place. The limitations of network connectivity available for accessing large data sets may mean that a more conservative quantification of Big Data is required when considering publication of 'Big Open Data'. For example, a data volume that may be trivial to transport on an internal network may be impractical to publish on the Web without taking special measures.
+
+\[UA: Some comment on different users, e.g. non-technical audiences]
 
 This guide is designed to highlight the challenges presented when openly publishing data via the Web (or through other Internet-based protocols) and, where possible, to highlight the measures that can be taken to mitigate these challenges. Crucially, these challenges do not relate simply to volume or velocity of the data published, but to technical, practical and legal factors that may hinder the utility/usability of the data if not addressed.
 
 
 ## Case Studies of Big Open Data Publication
 
-This section presents three case studies of open publication of big data, covering a range of data volumes and publication methods...
+We illustrate different ways of publishing data on the web with three current examples:
 
-\[UA: I find this sectin very important - we should select perhaps 3 cases, which offer something that we can describe.]
+1. The first one, [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. 
+2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
+3. The third example, [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
 
-* Amazon Public Datasets Programme
-* COINS data
-* DBpedia?
-* Common Crawl?
-* Weather data?
-* LHC???
+\[UA Test]
 
-* [1000 Genomes data](http://www.1000genomes.org/data#DataAccess) with more than 260 TB. Some sort of FTP hierarchy
-* 80 TB of archived [web crawl data](http://blog.archive.org/2012/10/26/80-terabytes-of-archived-web-crawl-data-available-for-research) available on request
-* [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html) simple download link. "Requirements: 300 GB diskspace"
-* This looks very promising as a [Bittorrent case study](http://www.biotorrents.net/). More info here: <http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2854681/>
+- [Case Study 1](#1000genomes)
+- [Case Study 2](#tinyimg)
+- [Case Study 3](#biotorrents)
 
-\[More stuff here http://www.quora.com/Data/Where-can-I-find-large-datasets-open-to-the-public]
+
+### [1,000 Genomes](id:1000genomes)
+#### Description
+
+The 1,000 Genome project provides a resource on human genetic variation by sequencing the genomes of a large number of people. Details of the project are published in an [article in Nature Methods](The 1000 Genomes Project: data management and community access): "In March 2012 the still-growing project resources include more than 260 terabytes of data in more than 250,000 publicly accessible files." The Wellcome Trust alone supports the project with an amount above £5 million. 
+
+Distributing the data poses several technical challenges:
+
+###### 1. Discovering parts of the data
+Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. 
+
+The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data.
+
+
+###### 2. Downloading the whole data
+
+Some \[UA: all?] TCP based protocols such as FTP do not scale well. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success.
+
+At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity.
+
+
+#### In conclusion
+The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
+
+Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public MySQL Instance and a mirror in the Amazon Simple Storage Service (S3).
+
+Additional support is manifold. Announcements are made available via RSS, Twitter and also via an email list. The website [1,000 Genomes](http://www.1000genomes.org) hosts all links and information about the data and the project. 
+
+
+### [Tiny Images Dataset](id:tinyimg)
+The Tiny Images data set consists of 79,302,017 images stored in the form of large binary files. They appear in an [academic paper](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4531741&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4531741) on scene recognition from 2008.
+
+In total there are 5 files that can be downloaded via a download link on the site:
+
+  - Image binary (227 Gb)
+  - Metadata binary (57 Gb)
+  - Gist binary (114 Gb)
+  - Index data (7 Mb)
+  - Matlab Tiny Images toolbox (150 Kb) 
+
+Providing the data via a simple download link may be tempting because it seems easy from a publisher's perspective. However, in this case there are a number of shortcomings: 
+
+1. It is not possible to download parts of the data.
+2. It seems, moreover, not possible to explore a sample of the data to see whether it suits a user's needs.
+3. What happens if a user's internet connection is interrupted?
+4. Support and documentation is very limited.
+
+\[UA: More on these shortcomings]
+
+
+
+### [BioTorrents](id:biotorrents)
+
+BioTorrents allows scientists to share data with the [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) peer-to-peer file sharing protocol. They provide a platform where all data is open-access and discoverable. At the time of writing the site counts 1,851 registered users and 120 data sets. The project is described in a [research article](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071). \[UA: Good read for more on bittorrent]
+
+BioTorrents contains multiple features, including keyword searching, category browsing, RSS feeds, torrent comments and a discussion forum. The source code for BioTorrents is published on [GitHub](https://github.com/mlangill/biotorrents/).
+
+###### Sharing data with BioTorrents
+
+According to the authors sharing data on BioTorrents is a simple three step process:
+
+ 1. The user creates a torrent file on their personal computer. This assumes they already have a BitTorrent client installed.
+ 2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
+ 3. The user shares the data by continuously running a BitTorrent client on their computer/server.
+ 
+###### Advantages of using BitTorrent
+
+* Compared to hosting files through FTP or HTTP, the BitTorrent protocol excels when data sets are distributed among many users. Especially with large files the bandwidth requirements spread across all computers which seed and actively download the data. This may also yield much faster download rates. 
+* BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
+* Data published with the BitTorrent protocol can be decentralised and is still available even if one server becomes disabled.
+
+
+###### Disadvantages of using BitTorrent
+
+* BioTorrents faces the problem that it requires users to download additional software to access torrents (files and data). 
+* Moreover, BitTorrent is often associated with illegal file-sharing, which may become a barrier in some institutions. 
+* BitTorrent is a rather unknown method of publishing data, hence, a lot of technical questions remain open; such as where to publish the torrent and how to communicate this method of publishing.
+
+
 
 
 ## Understanding Your Data
