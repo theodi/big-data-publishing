@@ -28,7 +28,7 @@ We illustrate different ways of publishing data on the web with three current ex
 2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
 3. The third example, [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
 
-\[UA] Test
+\[UA Test]
 
 - [Case Study 1](#1000genomes)
 - [Case Study 2](#tinyimg)
@@ -58,7 +58,7 @@ At least two mirror download sites provide access simultaneously and efficiently
 #### In conclusion
 The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
 
-Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public Mysql Instance and a mirror in the Amazon Simple Storage Service (S3).
+Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public MySQL Instance and a mirror in the Amazon Simple Storage Service (S3).
 
 Additional support is manifold. Announcements are made available via RSS, Twitter and also via an email list. The website [1,000 Genomes](http://www.1000genomes.org) hosts all links and information about the data and the project. 
 
@@ -74,29 +74,44 @@ In total there are 5 files that can be downloaded via a download link on the sit
   - Index data (7 Mb)
   - Matlab Tiny Images toolbox (150 Kb) 
 
-Publishing the data in such a way my be easy from a publisher's perspective but comes with a number of shortcomings: 
+Providing the data via a simple download link may be tempting because it seems easy from a publisher's perspective. However, in this case there are a number of shortcomings: 
 
 1. It is not possible to download parts of the data.
 2. It seems, moreover, not possible to explore a sample of the data to see whether it suits a user's needs.
 3. What happens if a user's internet connection is interrupted?
 4. Support and documentation is very limited.
 
+\[UA: More on these shortcomings]
 
 
 
 ### [BioTorrents](id:biotorrents)
 
+BioTorrents allows scientists to share data with the [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) peer-to-peer file sharing protocol. They provide a platform where all data is open-access and discoverable. At the time of writing the site counts 1,851 registered users and 120 data sets. The project is described in a [research article](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071). \[UA: Good read for more on bittorrent]
 
+BioTorrents contains multiple features, including keyword searching, category browsing, RSS feeds, torrent comments and a discussion forum. The source code for BioTorrents is published on [GitHub](https://github.com/mlangill/biotorrents/).
 
-BioTorrent see three advantages compared to hosting files through FTP or HTTP:
+###### Sharing data with BioTorrents
 
-* The BitTorrent protocol excels when the data is (very) large and multiple computers can seed (e.g. host) the data. Therefore, popular datasets that are often downloaded many times would see the largest benefit as bandwidth requirements are distributed across all computers seeding and actively downloading the data.
+According to the authors sharing data on BioTorrents is a simple three step process:
+
+ 1. The user creates a torrent file on their personal computer. This assumes they already have a BitTorrent client installed.
+ 2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
+ 3. The user shares the data by continuously running a BitTorrent client on their computer/server.
+ 
+###### Advantages of using BitTorrent
+
+* Compared to hosting files through FTP or HTTP, the BitTorrent protocol excels when data sets are distributed among many users. Especially with large files the bandwidth requirements spread across all computers which seed and actively download the data. This may also yield much faster download rates. 
 * BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
-* Data can be located on several servers allowing decentralization and availability of the data if one server becomes disabled.
+* Data published with the BitTorrent protocol can be decentralised and is still available even if one server becomes disabled.
 
-On the other hand, BioTorrents faces the problem that its requires users to download additional software to access torrents (files). Moreover, BitTorrent is often associated with illegale filesharing, which may become a barrier in some institutions. Lastly, a lot of technical questions remain open such as where to upload the torrent and how to communicate this method of publishing.
 
-The BitTorrent protocol excels when the data is (very) large and multiple computers can seed (e.g. host) the data. Therefore, popular datasets that are often downloaded many times would see the largest benefit as bandwidth requirements are distributed across all computers seeding and actively downloading the data.
+###### Disadvantages of using BitTorrent
+
+* BioTorrents faces the problem that it requires users to download additional software to access torrents (files and data). 
+* Moreover, BitTorrent is often associated with illegal file-sharing, which may become a barrier in some institutions. 
+* BitTorrent is a rather unknown method of publishing data, hence, a lot of technical questions remain open; such as where to publish the torrent and how to communicate this method of publishing.
+
 
 
 
