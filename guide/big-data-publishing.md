@@ -293,8 +293,7 @@ All prices based on the region EU (Ireland).
 |Next 49 TB / month|	$0.080 per GB|	$0.064 per GB| $0.011 per GB|
 |Next 450 TB / month|	$0.070 per GB|	$0.056 per GB| $0.011 per GB|
 |Next 500 TB / month	|	$0.065 per GB|	$0.052 per GB| $0.011 per GB|
-|Next 4000 TB / month|	$0.060 per GB|	$0.048 per GB| $0.011 per GB|
-|Over 5000 TB / month|	$0.055 per GB|	$0.037 per GB| $0.011 per GB|
+
 
 \*Amazon Glacier is optimised for data that is infrequently accessed and for which retrieval times of several hours are suitable.
 
