@@ -272,6 +272,76 @@ Probably the most well-known option for free hosting of open data sets is the [A
 
 \[*@ulrich: do you want to work out some sample costs for different sizes of data for S3 and Rackspace Cloud, e.g. 100GB, 1TB, 10TB, 100TB?*]
 
+Pricing follows a pay-as-you-grow model. 
+
+#### Amazon S3
+
+##### Examples
+
+| size | x full downloads | cost per month |
+|---|---|---|
+|10 GB | 10 times | ~ $11 |
+|10 GB | 1000 times | ~ $1319 |
+|1 TB | 10 times | ~ $1456 |
+
+All prices based on the region EU (Ireland).
+
+##### Storage Pricing
+| Data Storage| Standard | Reduced Redundancy | Glacier* |
+|---|---|---|---|
+|First 1 TB / month	| 	$0.095 per GB|	$0.076 per GB| $0.011 per GB|
+|Next 49 TB / month|	$0.080 per GB|	$0.064 per GB| $0.011 per GB|
+|Next 450 TB / month|	$0.070 per GB|	$0.056 per GB| $0.011 per GB|
+|Next 500 TB / month	|	$0.065 per GB|	$0.052 per GB| $0.011 per GB|
+|Next 4000 TB / month|	$0.060 per GB|	$0.048 per GB| $0.011 per GB|
+|Over 5000 TB / month|	$0.055 per GB|	$0.037 per GB| $0.011 per GB|
+
+\*Amazon Glacier is optimised for data that is infrequently accessed and for which retrieval times of several hours are suitable.
+
+##### Bandwidth Pricing
+
+|Data transfer **out** | Pricing |
+|---|---|
+|First 1 GB / month	 | $0.000 per GB |
+|Up to 10 TB / month |	$0.120 per GB |
+|Next 40 TB / month	 | $0.090 per GB |
+|Next 100 TB / month |	$0.070 per GB |
+|Next 350 TB / month |	$0.050 per GB |
+
+All **incoming** data transfer: $0.000 per GB
+
+#### Rackspace Cloud Files
+
+##### Examples
+
+| size | x full downloads | cost per month |
+|---|---|---|
+|10 GB | 10 times | ~ $13 |
+|10 GB | 1000 times | ~ $1201 |
+|1 TB | 10 times | ~ $1300 |
+
+
+##### Storage Pricing
+
+|Data storage| Pricing |
+|---|---|
+|First 1 TB / month	 | $0.100 per GB |
+|Next 49 TB / month	 | $0.090 per GB |
+|Next 150 TB / month |	$0.085 per GB |
+|Next 300 TB / month |	$0.080 per GB |
+
+##### Bandwidth Pricing
+
+|Data transfer **out**| Pricing |
+|---|---|
+|First 10 TB / month	 | $0.120 per GB |
+|Next 40 TB / month	 | $0.100 per GB |
+|Next 150 TB / month |	$0.070 per GB |
+|Next 300 TB / month |	$0.050 per GB |
+
+All **incoming** data transfer: $0.000 per GB
+
+
 
 ## Publishing Streaming Data
 
