@@ -106,6 +106,9 @@ According to the authors sharing data on BioTorrents is a simple three step proc
 
 
 
+## Audiences 
+
+\[*TH: what did we want to say here?*]
 
 ## Understanding Your Data
 
@@ -353,9 +356,6 @@ All **incoming** data transfer: $0.000 per GB
 \[*do all the same issues above apply, just in different ways?*]
 
 
-## Audiences 
-
-\[*TH: what did we want to say here?*]
 
 
 ## Metadata Publishing
