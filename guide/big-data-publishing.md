@@ -6,6 +6,8 @@
 
 ## Executive Summary
 
+@TH
+
 
 ## Introduction
 
@@ -21,6 +23,7 @@ This guide is designed to highlight the challenges presented when openly publish
 
 
 ## Case Studies of Big Open Data Publication
+\[@TH to review]
 
 We illustrate different ways of publishing data on the web with three current examples:
 
@@ -89,7 +92,7 @@ According to the authors sharing data on BioTorrents is a simple three step proc
  2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
  3. The user shares the data by continuously running a BitTorrent client on their computer/server.
 
-\[*TH: we should break out the generic bits here related to advantages and disadvantages and move them into the section below on Distribution Protocols*]
+\[*@TH: we should break out the generic bits here related to advantages and disadvantages and move them into the section below on Distribution Protocols*]
 
 #### Advantages of using BitTorrent
 
@@ -108,7 +111,16 @@ According to the authors sharing data on BioTorrents is a simple three step proc
 
 ## Audiences 
 
-\[*TH: what did we want to say here?*]
+@UA
+\[Considerations about at whom your publication is aimed.]
+
+- technical knowledge
+- financial and computing resources
+- reach
+- domain of the data (sensitivity)
+- publish data in general
+- likely use cases, e.g. full vs slices
+
 
 ## Understanding Your Data
 
@@ -118,6 +130,8 @@ If the data to be published changes rarely, or the intention is to simply publis
 
 
 ## Publishing Big Open Data in Small Fragments
+
+\[@TH move into/integrate into next section]
 
 In many cases, publishing large data dumps alone is undesirable, as this may limit the usability of the data for downstream consumers. For example, consumers may wish to:
 
@@ -140,6 +154,10 @@ A number of methods exist to enable this data publication pattern. For example, 
 
 
 ### File Formats
+\[@TH]
+
+\[OKFN recommend csv and json]
+(http://data.okfn.org/standards)
 
 \[*CSV vs JSON vs XML vs RDFx vs proprietary db dumps vs whatever...*]
 
@@ -164,7 +182,7 @@ The Zip format is able to gather together multiple input files into one output a
 
 By compressing each file in an archive individually, Zip is unable to exploit redundancy between files in the archive, and therefore typically achieves inferior compression performance compared to Gzip. This performance difference can be significant, but is naturally dependent on there being more than one file in an archive [check this -- do they use the same compression algorithm?] and on the degree of redundancy between files in the archive.
 
-\[*show some indicative stats about the performance of different methods on the same data in one file or split across several*]
+\[*@TH show some indicative stats about the performance of different methods on the same data in one file or split across several*]
 
 #### Individual Files
 
@@ -174,6 +192,7 @@ Conversely, Zip has an advantage when individual files need to be retrieved from
 
 Historically, use of the Zip format has been more prevalent on Windows platforms, while Gzip has a stronger association with Unix-like platforms (e.g. Mac OSX and Linux). In reality, all of these platforms support both compression formats, but users of each may be more familiar with the respective *de facto* standard for their platform and have tools more readily available. As a broad generalisation, consumers of big data are more likely to use Unix-like platforms, and therefore Gzip may be a sensible default, but the downstream usage context should always be considered.
 
+[@TH]
 [*Is Zip supported at all by Hadoop?*]
 
 \[*splittability]
@@ -208,20 +227,21 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 #### Processing-Optimised Sharding
 
+[@TH / @later]
 \[*revisit default hash partitioner in hadoop; any benefits in particular sharding schemes that may avoid overloading certain nodes if the data is lumpy? is this getting too specific? is it actually possible to anticipate this and provide any general guidance?*]
 
 
 
 ### Distribution Protocols
 
-
+[@TH]
 
 | Protocol	| Technical Skills Required 	| Resumability 	| Throttling 	|
 |-----------------|-----------------------------------|-----------------|-----------------|
 | HTTP		| Low				|		|		|
 | FTP		| Medium				|		|		|
 | Rsync		| High				|		|		|
-| BitTorrent 	| Medium				|		|		|
+| BitTorrent 	| Medium				|		|
 
 
 * HTTP: talk here about things like wget that are nicer than a browser
@@ -232,14 +252,19 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 ### Hosting Programmes and Platforms
 
-#### Hosting Programmes
+#### Free Hosting Programmes
 
 Probably the most well-known option for free hosting of open data sets is the [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets) programme. This has obvious cost benefits for data owners/publishers, but also brings advantages to consumers as the data sets are readily accessible within the Amazon EC2 cloud computing infrastructure, either as block storage snapshots that can be instantiated and attached to virtual machines in the Amazon cloud environment or as files within the S3 file storage service. This reduces the need for consumers to download the data to local computing infrastructure before it can be used/analysed. Data sets hosted under this programme are typically in the 1GB to 1TB range, and publishers must have the rights to make the data publicly available.
 
-\[*should we also cover the Google Public Datasets programme? not as open or comprehensive from what I can tell*]
+\[*should we also cover the Google Public Datasets programme? not as open or comprehensive from what I can tell* / what other services are available?]
 
-#### Hosting Services
 
+\[@UA]
+http://data.okfn.org/about
+
+#### Paid Hosting Services
+
+\[@UA]
 \[*If you want to pay for hosting and publishing of large data sets, the options include the following:*]
 
 * Amazon S3...
@@ -247,6 +272,7 @@ Probably the most well-known option for free hosting of open data sets is the [A
 * [others...?]
 
 #### Storage/Hosting Platforms
+[@later]
 
 \[*Alternatively, if you would like host and publish data using similar services but on your own infrastructure, a number of options are available:*]
 
@@ -258,12 +284,14 @@ Probably the most well-known option for free hosting of open data sets is the [A
 
 ### Headers
 
+[@later]
 \[*other HTTP headers that should be used/sent with the data?*]
 \[*should also cover content types*]
 
 
 ### Importability
 
+@TH
 \[*Generic discussion/overview of different formats and how they impact on importability*]
 
 \[*Discuss different consumption scenarios, e.g. public processing on EC2/EMR vs pulling down into a proprietary solution vs a behind the firewall solution on something like OpenStack]
@@ -274,6 +302,8 @@ Probably the most well-known option for free hosting of open data sets is the [A
 ### Costs
 
 \[*@ulrich: do you want to work out some sample costs for different sizes of data for S3 and Rackspace Cloud, e.g. 100GB, 1TB, 10TB, 100TB?*]
+
+\[@UA move tables into appendix / intro text which explains pricing models]
 
 Pricing follows a pay-as-you-grow model. 
 
@@ -347,6 +377,8 @@ All **incoming** data transfer: $0.000 per GB
 
 ## Publishing Streaming Data
 
+[@later]
+
 \[*clarify that much data is dynamic, but the importance of making this available in near real-time depends on how it will be used and what it will be used for, and practical issues such as scale*]
 
 \[*streaming APIs*]
@@ -359,6 +391,7 @@ All **incoming** data transfer: $0.000 per GB
 
 
 ## Metadata Publishing
+[@TH]
 
 ### licensing
 
@@ -375,12 +408,15 @@ All **incoming** data transfer: $0.000 per GB
 
 ### referencing-and-linking
 
+[@later]
 \[*relate this back to the section on RDF as a data model*]
 
 
 
 
 ## Collaboration
+
+[@later]
 
 ### collaboration-over-data
 
@@ -397,3 +433,5 @@ All **incoming** data transfer: $0.000 per GB
 [WhiteHadoopSmallFiles]:		http://blog.cloudera.com/blog/2009/02/the-small-files-problem/	"The Small Files Problem"
 [YahooHadoopAntiPatterns]:	http://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-anti-patterns-465.html	"Apache Hadoop: Best Practices and Anti-Patterns"
 [LDBook]:http://linkeddatabook.com/editions/1.0/#htoc4 "Linked Data: Evolving the Web into a Global Data Space"
+
+## Appendix
