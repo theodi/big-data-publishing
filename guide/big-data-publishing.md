@@ -418,6 +418,15 @@ All **incoming** data transfer: $0.000 per GB
 
 [@later]
 
+Useful links from Jeni about git for data:
+"I've added a few links in pinboard to some things that I've seen about using git for big data, namely that it isn't very good at it but there are tools like git-annex that make it possible to use."
+* http://git-annex.branchable.com/
+* http://inkdroid.org/journal/2012/03/27/cc0-and-git-for-data/
+* http://code4lib.org/conference/2012/collett
+
+Also from Jeni: "Maybe worth talking about using custom APIs to provide targeted corrections to data."
+
+
 ### collaboration-over-data
 
 \[*need to remind ourselves what we want to say here*]
