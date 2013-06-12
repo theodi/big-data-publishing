@@ -225,12 +225,6 @@ How the data may be processed downstream also has a bearing on the optimum file 
 In conclusion, a sensible compromise may be to partition the data into multiple smaller files but publish these alongside larger files that combine many smaller partitions (i.e. using less fine-grained partitioning). Alternatively, larger files may be published alongside sample data so potential consumers can easily inspect the contents.
 
 
-#### Processing-Optimised Sharding
-
-[@TH / @later]
-\[*revisit default hash partitioner in hadoop; any benefits in particular sharding schemes that may avoid overloading certain nodes if the data is lumpy? is this getting too specific? is it actually possible to anticipate this and provide any general guidance?*]
-
-
 
 ### Distribution Protocols
 
@@ -271,22 +265,6 @@ http://data.okfn.org/about
 * Rackspace Cloud...
 * [others...?]
 
-#### Storage/Hosting Platforms
-[@later]
-
-\[*Alternatively, if you would like host and publish data using similar services but on your own infrastructure, a number of options are available:*]
-
-* OpenStack Storage <http://www.openstack.org/software/openstack-storage/>
-* Riak Cloud Storage <http://basho.com/riak-cloud-storage/> (has an S3 compatible API, apparently)
-* Ceph
-
-
-
-### Headers
-
-[@later]
-\[*other HTTP headers that should be used/sent with the data?*]
-\[*should also cover content types*]
 
 
 ### Importability
@@ -375,20 +353,6 @@ All **incoming** data transfer: $0.000 per GB
 
 
 
-## Publishing Streaming Data
-
-[@later]
-
-\[*clarify that much data is dynamic, but the importance of making this available in near real-time depends on how it will be used and what it will be used for, and practical issues such as scale*]
-
-\[*streaming APIs*]
-
-\[*how to convey commit level (i.e. degree of 'consistency' of the data provided by a particular endpoint); e.g. an endpoint may be serviced by multiple servers with differing levels of consistency at any one time; how best to convey this to consumers? c.f. etags, headers indicating commit level...*]
-
-\[*do all the same issues above apply, just in different ways?*]
-
-
-
 
 ## Metadata Publishing
 [@TH]
@@ -405,22 +369,6 @@ All **incoming** data transfer: $0.000 per GB
 ### update frequency
 
 \[*follow similar approaches to documenting this as for licensing and provenance*]
-
-### referencing-and-linking
-
-[@later]
-\[*relate this back to the section on RDF as a data model*]
-
-
-
-
-## Collaboration
-
-[@later]
-
-### collaboration-over-data
-
-\[*need to remind ourselves what we want to say here*]
 
 
 ## Acknowledgements
