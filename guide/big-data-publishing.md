@@ -25,17 +25,12 @@ This guide is designed to highlight the challenges presented when openly publish
 ## Case Studies of Big Open Data Publication
 \[@TH to review]
 
-We illustrate different ways of publishing data on the web with three current examples:
+We illustrate different ways of publishing data on the web with four current examples:
 
-1. The first one, [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. 
-2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
-3. The third example, [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
-
-\[UA Test]
-
-- [Case Study 1](#1000genomes)
-- [Case Study 2](#tinyimg)
-- [Case Study 3](#biotorrents)
+1. [Case study 1](#1000genomes), [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. 
+2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), [case study 2](#tinyimg), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
+3. [Case study 3](#biotorrents), [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
+4. Google's [Measurement Lab](http://www.measurementlab.net/) or M-Lab publishes over 747Tb of data under CCZero and they get about 430Gb of uncompressed data a day.
 
 
 ### [1,000 Genomes](id:1000genomes)
@@ -111,15 +106,18 @@ According to the authors sharing data on BioTorrents is a simple three step proc
 
 ## Audiences 
 
-@UA
-\[Considerations about at whom your publication is aimed.]
+Technical aspects and resources will shape many considerations when publishing big data. However, remember that someone is hopefully using your data, so consider your audience:
 
-- technical knowledge
-- financial and computing resources
-- reach
-- domain of the data (sensitivity)
-- publish data in general
-- likely use cases, e.g. full vs slices
+1. What is the **technical knowledge** you can assume? For example, will users be savvy enough to download a BitTorrent client?  
+2. What are the **computing resources** available to users? If your data exceeds the limits of a personal computer, you may want to invest more time in sharding your data.
+3. Consider your **reach**: Do you expect 10 users to download the full data set or 10,000?
+4. What are likely **use cases**? 
+
+Keeping the user in mind also ought to guide all other aspects of publishing:
+
+- How you write your data's documentation
+- What further context you provide
+- What level of support you offer
 
 
 ## Understanding Your Data
