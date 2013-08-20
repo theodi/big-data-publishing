@@ -6,20 +6,20 @@
 
 ## Executive Summary
 
-@TH
+While much has been written on the subject of Big Data, the majority assumes application and exploitation of proprietary data sets in enterprise settings. Little consideration has been given to how openly-licensed Big Data may be widely distributed over the public Internet, and the challenges this may pose. This guide presents several case studies of Big Data published under open licenses [check the licenses are solid] that highlight different approaches that may be taken, before exploring distribution mechanisms and emerging best practices for publishing 'Big Open Data'. Guidance is provided covering topics such as file formats, data partitioning, compression, and inclusion of metadata. The guide concludes with examination of various data hosting/publishing platforms and associated costs.
 
 
-## Introduction
+## Introduction: from Big Data to Big Open Data
 
-The notion of *Big Data* has gained significant coverage in the technology press and broader media. It is sold to businesses as the next big thing. Most definitions of the term reference the three Vs (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing and data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+The notion of *Big Data* has gained significant coverage in the technology press and broader media, with commentators seeing opportunities for new business insights to be derived from routine, large-scale data analysis. Most definitions of the term reference the "three Vs" (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing/data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
 
-A more meaningful understanding of the concept may be gained by considering the context of deployment and usage. As a broad generalisation, the majority of the discourse on the topic centres around or assumes Big Data deployment and usage in the enterprise. For example, a large retailer may process massive volumes of transaction data to produce insights into shopping habits. This may be an exercise with purely internal data, e.g. which items are bought at the same time, or it may attempt to relate purchasing habits to external factors, e.g. weather or sporting events, that involve consumption of third party data which is likely smaller in volume.
+A more meaningful understanding of the concept may be gained by considering the context in which data is used. Broadly speaking, the majority of the discourse on Big Data assumes it will be applied in an eneterprise setting. For example, a large retailer may process massive volumes of proprietary transaction data to produce insights into shopping habits, such as which items are typically bought during the same shopping trip. Alternatively, a retailer may attempt to relate purchasing habits to external factors, such as weather trends or sporting events, where the analysis would involve consumption of third party data.
 
-In either case, data processing is assumed to take place behind the firewall, where it can be transferred across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where data is published in the open for reuse by a wide range of consumers. In such cases, distribution of the data across the Internet presents the first challenge, before any processing can take place. The limitations of network connectivity available for accessing large data sets may mean that a more conservative quantification of Big Data is required when considering publication of 'Big Open Data'. For example, a data volume that may be trivial to transport on an internal network may be impractical to publish on the Web without taking special measures.
+In either case, data processing is assumed to take place 'behind the firewall', where it can be transferred relatively easily across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where large, varied, or rapidly changing data is made publicly available under an open license for reuse by a wide range of consumers. The first challenge in such cases, before any processing/analysis can take place, is to distribute the data. The limited network connectivity available for accessing large data sets may mean that a more conservative definition/quantification of Big Data is required when considering publication of 'Big Open Data'. To put it another way, the challenges of 'bigness' apply to smaller data sets in an open publication scenario than they do in a bounded, enterprise setting. For example, it may be trivial to transport gigabytes of data across an internal network, but publishing the same data volume on the public Web for anyone to access would likely require special measures to be taken in order to be feasible. It is these special measures which are the focus of this guide.
 
-\[UA: Some comment on different users, e.g. non-technical audiences]
+In addition, fewer assumptions about the audience can be made when large data volumes are openly published. In an enterprise setting, for example, the sole audience for a dataset may be in-house data analysts whose technical skills and available resources are well understood. In contrast, data published more openly may reach a wide range of audiences with varied skills and technical/computing resources, and who may use it for a wider range of purposes than was originally envisaged. Consequently, additional measures should be taken where possible to cater for these diverse audiences.
 
-This guide is designed to highlight the challenges presented when openly publishing data via the Web (or through other Internet-based protocols) and, where possible, to highlight the measures that can be taken to mitigate these challenges. Crucially, these challenges do not relate simply to volume or velocity of the data published, but to technical, practical and legal factors that may hinder the utility/usability of the data if not addressed.
+This guide is designed to highlight the challenges presented when openly publishing data via the Web (or through other Internet-based protocols) and, where possible, to describe the measures that can be taken to mitigate these challenges. Crucially, these challenges do not relate simply to volume or velocity of the data published, but to technical, practical and legal factors that may hinder the utility/usability of the data if not addressed.
 
 
 ## Case Studies of Big Open Data Publication
@@ -87,47 +87,36 @@ According to the authors sharing data on BioTorrents is a simple three step proc
  2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
  3. The user shares the data by continuously running a BitTorrent client on their computer/server.
 
-\[*@TH: we should break out the generic bits here related to advantages and disadvantages and move them into the section below on Distribution Protocols*]
-
-#### Advantages of using BitTorrent
-
-* Compared to hosting files through FTP or HTTP, the BitTorrent protocol excels when data sets are distributed among many users. Especially with large files the bandwidth requirements spread across all computers which seed and actively download the data. This may also yield much faster download rates. 
-* BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
-* Data published with the BitTorrent protocol can be decentralised and is still available even if one server becomes disabled.
+Advantages and disadvantages of BitTorrent as a distribution protocol are discussed below.
 
 
-#### Disadvantages of using BitTorrent
-
-* BioTorrents faces the problem that it requires users to download additional software to access torrents (files and data). 
-* Moreover, BitTorrent is often associated with illegal file-sharing, which may become a barrier in some institutions. 
-* BitTorrent is a rather unknown method of publishing data, hence, a lot of technical questions remain open; such as where to publish the torrent and how to communicate this method of publishing.
+## Publishing Big Open Data
 
 
-
-## Audiences 
+### Understanding your Audience
 
 Technical aspects and resources will shape many considerations when publishing big data. However, remember that someone is hopefully using your data, so consider your audience:
 
-1. What is the **technical knowledge** you can assume? For example, will users be savvy enough to download a BitTorrent client?  
+1. What is the **technical knowledge** you can assume? For example, will users be savvy enough to download a BitTorrent client?
 2. What are the **computing resources** available to users? If your data exceeds the limits of a personal computer, you may want to invest more time in sharding your data.
 3. Consider your **reach**: Do you expect 10 users to download the full data set or 10,000?
 4. What are likely **use cases**? 
 
-Keeping the user in mind also ought to guide all other aspects of publishing:
 
+Keeping the user in mind also ought to guide all other aspects of publishing:
 - How you write your data's documentation
 - What further context you provide
 - What level of support you offer
 
 
-## Understanding Your Data
+### Understanding your Data
 
 As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
 If the data to be published changes rarely, or the intention is to simply publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing Data Dumps* will be most suitable. Conversely, if the data to be published has great *variety*, changes regularly (*velocity*), or is required by consumers in near real-time, the *Publishing Many Small Data Fragments* and *Publishing Streaming Data* section below will likely be of greatest value.
 
 
-## Publishing Big Open Data in Small Fragments
+### Publishing Big Open Data in Small Fragments
 
 \[@TH move into/integrate into next section]
 
@@ -142,7 +131,7 @@ To give an example, horizontal e-commerce sites such as Amazon.com or Tesco.com 
 This diversity in the dynamics of the data, and in consumer requirements, makes periodic data dumps unsuitable for any applications that rely on prompt access to the most recent data. Therefore, in addition to data dumps, it is appropriate to consider publishing Big Open Data in smaller fragments via a conventional Web site or Web API.
 
 
-### Web APIs and Web sites
+#### Web APIs and Web sites
 
 Web APIs (Application Programming Interfaces) "provide simple query access to structured data over the HTTP protocol" [Linked Data: Evolving the Web into a Global Data Space][LDBook]. Deploying a Web API can enable consumers to access smaller fragments of an otherwise very large data set, and vary how the data is retrieved according to the nature of the data itself.
 
@@ -151,7 +140,7 @@ While many Web APIs are deployed in parallel to but separately from a convention
 A number of methods exist to enable this data publication pattern. For example, RDFa [ref] allows data to be embedded within HTML documents, while data in other formats may be published in separate files alongside HTML documents that present the data for human users.
 
 
-### File Formats
+#### File Formats
 \[@TH]
 
 \[OKFN recommend csv and json]
@@ -163,30 +152,30 @@ A number of methods exist to enable this data publication pattern. For example, 
 
 
 
-## Publishing Data Dumps
+### Publishing Data Dumps
 
 
-### Compression
+#### Compression
 
 In many big data publishing scenarios it is highly desirable to compress the data before publication to reduce the size of files downloaded by consumers. Compression becomes particularly important as the volume of data increases, but does bring a number of disadvantages. For example, consumers must decompress files in order to inspect the data, and compressed files are less likely to be indexed by search engines, thereby limiting the discoverability of data and the potential for onward linking to related data. The remainder of the section briefly reviews various open compression formats that may be used for big data publishing.
 
 Two formats that are widely supported are *Zip* and *Gzip*. \[*do both use the same compression algorithm?*]. The trade-offs between these two formats are discussed in more detail in [this article](http://www.differencebetween.net/technology/difference-between-zip-and-gzip/), but in this context the salient differences between these formats can be summarised as follows:
 
-#### Support for Archives
+##### Support for Archives
 
 The Zip format is able to gather together multiple input files into one output archive, compressing each input file individually. By contrast, Gzip is a pure compression format that relies on an external programme such as *Tar* to first collect multiple input files into one archive before compression.
 
-#### Compression Performance
+##### Compression Performance
 
 By compressing each file in an archive individually, Zip is unable to exploit redundancy between files in the archive, and therefore typically achieves inferior compression performance compared to Gzip. This performance difference can be significant, but is naturally dependent on there being more than one file in an archive [check this -- do they use the same compression algorithm?] and on the degree of redundancy between files in the archive.
 
 \[*@TH show some indicative stats about the performance of different methods on the same data in one file or split across several*]
 
-#### Individual Files
+##### Individual Files
 
 Conversely, Zip has an advantage when individual files need to be retrieved from an archive, as each can be extracted without requiring the entire contents to be decompressed. In the case of Gzip applied to Tar archives, the Tar programme has a compression-aware mode that can extract specific files from an archive, but in the worst case the entire archive may need to be decompressed before the target file is located \[*double check that this is the case*]. It should be noted that the compression-aware mode in Tar supports multiple compression formats in addition to Gzip, including *Bzip2* and *LZO*.
 
-#### Platform Support
+##### Platform Support
 
 Historically, use of the Zip format has been more prevalent on Windows platforms, while Gzip has a stronger association with Unix-like platforms (e.g. Mac OSX and Linux). In reality, all of these platforms support both compression formats, but users of each may be more familiar with the respective *de facto* standard for their platform and have tools more readily available. As a broad generalisation, consumers of big data are more likely to use Unix-like platforms, and therefore Gzip may be a sensible default, but the downstream usage context should always be considered.
 
@@ -199,15 +188,15 @@ Historically, use of the Zip format has been more prevalent on Windows platforms
 In summary, the most appropriate compression scheme to adopt will depend on the intended audience, the tooling likely to be used, the nature of the data itself (i.e. it's inherent redundancy), and how it is packaged/partitioned for publication.
 
 
-### Partitioning/Sharding
+#### Partitioning/Sharding
 
 For publication as static dumps, data sets beyond a certain size will likely need to be split up into smaller pieces to aid discovery, distribution, and reuse. This process could be referred to as *partitioning* or *sharding*, with different segments of one logical dataset contained within different files. Various (and multiple) partitioning schemes could be used for the same data set, depending on how the data may be used.
 
-#### Logical Partitioning
+##### Logical Partitioning
 
 Perhaps the most obvious partitioning scheme is to split the data into logical groups, according to how consumers may wish to use it. For example, descriptive product data may be partitioned by product category, while transaction or event data may be partitioned by time period (e.g. daily, weekly, monthly, yearly depending on the data volume).
 
-#### Size-Optimised Partitioning
+##### Size-Optimised Partitioning
 
 How the data will be retrieved and processed has an impact on how large each partition should be. On the one hand, a large number of small files published on the Web is desirable, as this enables each partition to be identified by its own URI at a granular level, referenced in other data sources and documents, and easily inspected with common desktop tools (e.g. spreadsheet applications or text editors).
 
@@ -224,7 +213,7 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 
 
 
-### Distribution Protocols
+#### Distribution Protocols
 
 [@TH]
 
@@ -242,26 +231,18 @@ In conclusion, a sensible compromise may be to partition the data into multiple 
 * Bittorrent
     \[* From James: *We discussed distributing data over bittorrent, and how you can ensure provenance, reliability etc. Well, if you had the .torrent file contained in a data package type git repository and included an md5sum of the contents, you presumably could use that to verify that the torrented version was correct with the official release. Perhaps data packages (or other metadata formats) could be extended to include a md5sum of the data in the referenced file.*]
 
-### Hosting Programmes and Platforms
+##### Advantages of using BitTorrent
 
-#### Free Hosting Programmes
-
-Probably the most well-known option for free hosting of open data sets is the [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets) programme. This has obvious cost benefits for data owners/publishers, but also brings advantages to consumers as the data sets are readily accessible within the Amazon EC2 cloud computing infrastructure, either as block storage snapshots that can be instantiated and attached to virtual machines in the Amazon cloud environment or as files within the S3 file storage service. This reduces the need for consumers to download the data to local computing infrastructure before it can be used/analysed. Data sets hosted under this programme are typically in the 1GB to 1TB range, and publishers must have the rights to make the data publicly available.
-
-\[*should we also cover the Google Public Datasets programme? not as open or comprehensive from what I can tell* / what other services are available?]
+* Compared to hosting files through FTP or HTTP, the BitTorrent protocol excels when data sets are distributed among many users. Especially with large files the bandwidth requirements spread across all computers which seed and actively download the data. This may also yield much faster download rates. 
+* BioTorrents can act as a central listing of results, datasets, and software that can be browsed and searched.
+* Data published with the BitTorrent protocol can be decentralised and is still available even if one server becomes disabled.
 
 
-\[@UA]
-http://data.okfn.org/about
+##### Disadvantages of using BitTorrent
 
-#### Paid Hosting Services
-
-\[@UA]
-\[*If you want to pay for hosting and publishing of large data sets, the options include the following:*]
-
-* Amazon S3...
-* Rackspace Cloud...
-* [others...?]
+* BioTorrents faces the problem that it requires users to download additional software to access torrents (files and data). 
+* Moreover, BitTorrent is often associated with illegal file-sharing, which may become a barrier in some institutions. 
+* BitTorrent is a rather unknown method of publishing data, hence, a lot of technical questions remain open; such as where to publish the torrent and how to communicate this method of publishing.
 
 
 
@@ -275,7 +256,52 @@ http://data.okfn.org/about
 \[*Object vs Block storage in e.g. Amazon EC2/EMR/S3; ease of mounting block storage from nodes in a cluster vs pulling down from object storage; compare this to disk requirements on each node; what is the optimum approach in different settings]
 
 
-### Costs
+
+### Metadata Publishing
+[@TH]
+
+#### licensing
+
+\[*relatively understood problem for small fragments and streaming data, dumps likely to be more ad-hoc. what is best practice? bundle a license statement/document in the root of every dump archive?*]
+
+#### provenance
+
+\[*same as above re licensing, but make sure it's also in machine-readable form?*]
+
+
+#### update frequency
+
+\[*follow similar approaches to documenting this as for licensing and provenance*]
+
+\[*ref ODCs*]
+
+
+## Hosting Programmes and Platforms
+
+### Free Hosting Programmes
+
+Probably the most well-known option for free hosting of open data sets is the [Amazon Public Data Sets](http://aws.amazon.com/publicdatasets) programme. This has obvious cost benefits for data owners/publishers, but also brings advantages to consumers as the data sets are readily accessible within the Amazon EC2 cloud computing infrastructure, either as block storage snapshots that can be instantiated and attached to virtual machines in the Amazon cloud environment or as files within the S3 file storage service. This reduces the need for consumers to download the data to local computing infrastructure before it can be used/analysed. Data sets hosted under this programme are typically in the 1GB to 1TB range, and publishers must have the rights to make the data publicly available.
+
+\[*should we also cover the Google Public Datasets programme? not as open or comprehensive from what I can tell* / what other services are available?]
+
+
+\[@UA]
+http://data.okfn.org/about
+
+### Paid Hosting Services
+
+\[@UA]
+\[*If you want to pay for hosting and publishing of large data sets, the options include the following:*]
+
+* Amazon S3...
+* Rackspace Cloud...
+* [others...?]
+
+
+
+
+
+#### Costs
 
 \[*@ulrich: do you want to work out some sample costs for different sizes of data for S3 and Rackspace Cloud, e.g. 100GB, 1TB, 10TB, 100TB?*]
 
@@ -283,9 +309,9 @@ http://data.okfn.org/about
 
 Pricing follows a pay-as-you-grow model. 
 
-#### Amazon S3
+##### Amazon S3
 
-##### Examples
+###### Examples
 
 | size | x full downloads | cost per month |
 |---|---|---|
@@ -295,7 +321,7 @@ Pricing follows a pay-as-you-grow model.
 
 All prices based on the region EU (Ireland).
 
-##### Storage Pricing
+###### Storage Pricing
 | Data Storage| Standard | Reduced Redundancy | Glacier* |
 |---|---|---|---|
 |First 1 TB / month	| 	$0.095 per GB|	$0.076 per GB| $0.011 per GB|
@@ -306,7 +332,7 @@ All prices based on the region EU (Ireland).
 
 \*Amazon Glacier is optimised for data that is infrequently accessed and for which retrieval times of several hours are suitable.
 
-##### Bandwidth Pricing
+###### Bandwidth Pricing
 
 |Data transfer **out** | Pricing |
 |---|---|
@@ -318,9 +344,9 @@ All prices based on the region EU (Ireland).
 
 All **incoming** data transfer: $0.000 per GB
 
-#### Rackspace Cloud Files
+##### Rackspace Cloud Files
 
-##### Examples
+###### Examples
 
 | size | x full downloads | cost per month |
 |---|---|---|
@@ -329,7 +355,7 @@ All **incoming** data transfer: $0.000 per GB
 |1 TB | 10 times | ~ $1300 |
 
 
-##### Storage Pricing
+###### Storage Pricing
 
 |Data storage| Pricing |
 |---|---|
@@ -338,7 +364,7 @@ All **incoming** data transfer: $0.000 per GB
 |Next 150 TB / month |	$0.085 per GB |
 |Next 300 TB / month |	$0.080 per GB |
 
-##### Bandwidth Pricing
+###### Bandwidth Pricing
 
 |Data transfer **out**| Pricing |
 |---|---|
@@ -351,22 +377,6 @@ All **incoming** data transfer: $0.000 per GB
 
 
 
-
-## Metadata Publishing
-[@TH]
-
-### licensing
-
-\[*relatively understood problem for small fragments and streaming data, dumps likely to be more ad-hoc. what is best practice? bundle a license statement/document in the root of every dump archive?*]
-
-### provenance
-
-\[*same as above re licensing, but make sure it's also in machine-readable form?*]
-
-
-### update frequency
-
-\[*follow similar approaches to documenting this as for licensing and provenance*]
 
 
 ## Acknowledgements
