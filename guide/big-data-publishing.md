@@ -23,37 +23,25 @@ This guide is designed to highlight the challenges presented when openly publish
 
 
 ## Case Studies of Big Open Data Publication
-\[@TH to review]
 
-We illustrate different ways of publishing data on the web with four current examples:
-
-1. [Case study 1](#1000genomes), [1,000 Genomes](http://www.1000genomes.org/data#DataAccess), is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. 
-2. The [Tiny Images Dataset](http://horatio.cs.nyu.edu/mit/tiny/data/index.html), [case study 2](#tinyimg), despite its size of hundreds of gigabytes, provides a simple download link, which is familiar to most web users.
-3. [Case study 3](#biotorrents), [BioTorrents](http://www.biotorrents.net/), employs a more unconventional, distributed publication form and uses the BitTorrent protocol.
-4. Google's [Measurement Lab](http://www.measurementlab.net/) or M-Lab publishes over 747Tb of data under CCZero and they get about 430Gb of uncompressed data a day.
+The four case studies below illustrate different approaches to publishing big open data via the public Internet.
 
 
-### [1,000 Genomes](id:1000genomes)
-#### Description
+### 1,000 Genomes
 
-The 1,000 Genome project provides a resource on human genetic variation by sequencing the genomes of a large number of people. Details of the project are published in an [article in Nature Methods](The 1000 Genomes Project: data management and community access): "In March 2012 the still-growing project resources include more than 260 terabytes of data in more than 250,000 publicly accessible files." The Wellcome Trust alone supports the project with an amount above £5 million. 
+The [1,000 Genome project](http://www.1000genomes.org/data#DataAccess) is an extreme case in terms of size. With 260 terabytes, and growing, it is one of the largest distributed data projects ever undertaken in biology. The project provides a resource on human genetic variation by sequencing the genomes of a large number of people. Details of the project are published in an [article in Nature Methods](The 1000 Genomes Project: data management and community access): "In March 2012 the still-growing project resources include more than 260 terabytes of data in more than 250,000 publicly accessible files." The Wellcome Trust alone supports the project with an amount above £5 million [ref].
 
 Distributing the data poses several technical challenges:
 
-1. **Discovering parts of the data**: Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data.
+1. **Discovering parts of the data**: Some people do not want to or cannot download all of the data. We describe the main method for publication in the next section. The 1,000 Genomes project also provides key components of the data via Amazon Web Services as an alternative distribution channel. The authors notice that most users are more interested specific regions of the genome rather than the entire data set. Consequently, the files are distributed in directories named for the sequence. The complexity of the data, however, may make it extremely difficult to find the relevant parts. The publishers provide among other tools a **directory file**, a **FTP search tool** and a **data browser** to assist users in searching the data. \[TH: think this para needs more work]
 
-2. **Downloading the whole data**: Some \[UA: all?] TCP based protocols such as FTP do not scale well. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success. At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity.
+2. **Downloading the whole data**: Some \[UA: all?] TCP based protocols such as FTP do not scale well [TH: not happy with this passage without references; unsupported assertion]. The 1,000 Genomes project relies on a service from [Aspera](http://asperasoft.com/): Their UDP-based method achieves data transfer rates which in typical usage are 20-30 times faster than FTP. Aspera's [fasp&trade;](http://asperasoft.com/technology/transport/fasp/) is a commercial product, but is, according to one technical team member, used with great success \[TH: what are the requirements for users? a proprietary client?]. At least two mirror download sites provide access simultaneously and efficiently increase the overall download capacity. \[TH: this whole section sounds too promotional; need to make it more objective]
 
-#### Conclusion
-The 1,000 Genome project tackles the technical challenges by publishing the data in different ways. 
-
-Users can download the whole data set with a comparable, but faster version FTP. Parts of the data are available and discoverable via a FTP structure, a FTP search, a data slicer, the 1000 Genomes browser, a public MySQL Instance and a mirror in the Amazon Simple Storage Service (S3).
-
-Additional support is manifold. Announcements are made available via RSS, Twitter and also via an email list. The website [1,000 Genomes](http://www.1000genomes.org) hosts all links and information about the data and the project. 
+In conclusion, the 1,000 Genome project tackles the technical challenges by publishing the data in different ways. Users can download the whole data set using a proprietary variant on FTP, discussed above. Parts of the data are available and discoverable via an FTP structure, an FTP search, a data slicer, the 1000 Genomes browser \[redundancy here with point 1 above], a public MySQL Instance and a mirror in the Amazon Simple Storage Service (S3). Additional support is manifold. Announcements \[TH: of what?] are made available via RSS, Twitter and also via an email list \[link]. The website [1,000 Genomes](http://www.1000genomes.org/) hosts all links and information about the data and the project. 
 
 
-### [Tiny Images Dataset](id:tinyimg)
-The Tiny Images data set consists of 79,302,017 images stored in the form of large binary files. They appear in an [academic paper](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4531741&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4531741) on scene recognition from 2008.
+### [Tiny Images Dataset]
+The Tiny Images data set [http://horatio.cs.nyu.edu/mit/tiny/data/index.html] consists of almost 80 million (79,302,017) images stored in the form of large binary files. They appear \[TH: in what sense do they appear?] in an [academic paper](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4531741&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4531741) on scene recognition from 2008.
 
 In total there are 5 files that can be downloaded via a download link on the site:
 
@@ -63,50 +51,56 @@ In total there are 5 files that can be downloaded via a download link on the sit
   - Index data (7 Mb)
   - Matlab Tiny Images toolbox (150 Kb) 
 
-Providing the data via a simple download link may be tempting because it seems easy from a publisher's perspective. However, in this case there are a number of shortcomings: 
+Despite data files totalling hundreds of gigabytes in size, consumers of the data must simply follow a conventional hyperlink to download these files over HTTP. While this approach provides a simple distribution mechanism from the perspective of the publisher, it has a number of shortcomings:
 
-1. It is not possible to download parts of the data.
-2. It seems, moreover, not possible to explore a sample of the data to see whether it suits a user's needs.
-3. What happens if a user's internet connection is interrupted?
-4. Support and documentation is very limited.
+  1. Smaller subsets of the data cannot be downloaded individually, meaning it is not possible to explore a sample of the data to see whether it suits a user's needs.
+  2. A user whose Internet connection is interrupted during the download may initiate a fresh download of the entire data file, depending on the client being used, rather than resuming a partially completed download. This can increase both the overall time to retrieve the data and the data transfer costs of both parties. Resumability is discussed in more detail below.
+  3. Support and documentation is very limited. \[@UA: is this a shortcoming of this publication approach or of the project in general?]
 
 \[UA: More on these shortcomings]
 
+In conclusion, provision of large data files over HTTP provides a low barrier of entry for publication, but may not be well suited to all audiences and/or usage contexts.
 
-### [BioTorrents](id:biotorrents)
 
-BioTorrents allows scientists to share data with the [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) peer-to-peer file sharing protocol. They provide a platform where all data is open-access and discoverable. At the time of writing the site counts 1,851 registered users and 120 data sets. The project is described in a [research article](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071). \[UA: Good read for more on bittorrent]
+### BioTorrents
 
-BioTorrents contains multiple features, including keyword searching, category browsing, RSS feeds, torrent comments and a discussion forum. The source code for BioTorrents is published on [GitHub](https://github.com/mlangill/biotorrents/).
+The BioTorrents project, described in a [research article](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071) \[UA: Good read for more on bittorrent], provides a platform allowing scientists to share data via the [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) peer-to-peer file sharing protocol. All data published via the platform is open-access and discoverable, while the platform itself provides features such as keyword search, category browsing, RSS feeds, torrent comments and a discussion forum. The BioTorrents source code is published on [GitHub](https://github.com/mlangill/biotorrents/). At the time of writing the site counts 1,851 registered users and 120 data sets. 
 
-#### Sharing data with BioTorrents
+As described in [ref](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071), sharing data on BioTorrents is a three step process:
 
-According to the authors sharing data on BioTorrents is a simple three step process:
+  1. The user creates a torrent file on their personal computer. This assumes they already have a BitTorrent client installed.
+  2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
+  3. The user shares the data by continuously running a BitTorrent client on their computer/server.
 
- 1. The user creates a torrent file on their personal computer. This assumes they already have a BitTorrent client installed.
- 2. The newly created torrent file is uploaded to the website. It includes metadata such as a user description, category, and license type. This assumes the user previously created an account.
- 3. The user shares the data by continuously running a BitTorrent client on their computer/server.
+\[@UA: is this a direct quote?]
 
-Advantages and disadvantages of BitTorrent as a distribution protocol are discussed below.
+BioTorrents provides a rich case study of using BitTorrent for data distribution. Advantages and disadvantages of BitTorrent as a distribution protocol are discussed below.
+
+
+### Measurement Lab
+
+Google's M-Lab (http://www.measurementlab.net/) publishes over 747Tb of data under CCZero and they get about 430Gb of uncompressed data a day.
+
+
 
 
 ## Publishing Big Open Data
 
-
 ### Understanding your Audience
 
-Technical aspects and resources will shape many considerations when publishing big data. However, remember that someone is hopefully using your data, so consider your audience:
+Technical considerations, such as the nature of the data and the resources available to data consumers, will shape many decisions when publishing big open data. Answering the following questions may help in understanding the needs of the target audience for the data:
 
-1. What is the **technical knowledge** you can assume? For example, will users be savvy enough to download a BitTorrent client?
-2. What are the **computing resources** available to users? If your data exceeds the limits of a personal computer, you may want to invest more time in sharding your data.
-3. Consider your **reach**: Do you expect 10 users to download the full data set or 10,000?
-4. What are likely **use cases**? 
+  1. How much **technical knowledge** can be assumed? For example, can users be expected to download/install a BitTorrent or FTP client?
+  2. What are the **computing resources** available to users? If your data exceeds the limits of a personal computer, the data may need to be 'sharded' into managable pieces.
+  3. What is the potential **reach** for the data? Is it of interest to 10 users or 10,000?
+  4. What are likely **use cases** for the data?
 
+Keeping the user in mind also ought to guide all other aspects of publishing, such as:
+  - How the data is documented
+  - What further context is provided about the data
+  - What level of support is offered
 
-Keeping the user in mind also ought to guide all other aspects of publishing:
-- How you write your data's documentation
-- What further context you provide
-- What level of support you offer
+Further guidance on these broader aspects of open data publishing can be obtained by applying for an [Open Data Certificate](http://certificates.theodi.org/) for a particular data set.
 
 
 ### Understanding your Data
