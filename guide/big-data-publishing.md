@@ -11,9 +11,9 @@ While much has been written on the subject of Big Data, the majority assumes app
 
 ## Introduction: from Big Data to Big Open Data
 
-The notion of *Big Data* has gained significant coverage in the technology press and broader media, with commentators seeing opportunities for new business insights to be derived from routine, large-scale data analysis. Most definitions of the term reference the "three Vs" (Volume, Variety, and Velocity) [ref] and loosely define Big Data as that which is not easily managed using traditional computing/data management approaches and infrastructures [ref]. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
+The notion of *Big Data* has gained significant coverage in the technology press and broader media, with commentators seeing opportunities for new business insights to be derived from routine, large-scale data analysis. Most definitions of the term reference the "three Vs" (Volume, Variety, and Velocity, [Douglas, 2001][Douglas2001]) and loosely define Big Data as that which is not easily managed using traditional computing/data management approaches and infrastructures. Needless to say, 'traditional' remains ambiguous, and the volume of data that may be easily processed on any infrastructure continues to increase, making it almost impossible to quantify Big Data.
 
-A more meaningful understanding of the concept may be gained by considering the context in which data is used. Broadly speaking, the majority of the discourse on Big Data assumes it will be applied in an eneterprise setting. For example, a large retailer may process massive volumes of proprietary transaction data to produce insights into shopping habits, such as which items are typically bought during the same shopping trip. Alternatively, a retailer may attempt to relate purchasing habits to external factors, such as weather trends or sporting events, where the analysis would involve consumption of third party data.
+A more meaningful understanding of the concept may be gained by considering the context in which data is used. Broadly speaking, the majority of the discourse on Big Data assumes it will be applied in an enterprise setting. For example, a large retailer may process massive volumes of proprietary transaction data to produce insights into shopping habits, such as which items are typically bought during the same shopping trip. Alternatively, a retailer may attempt to relate purchasing habits to external factors, such as weather trends or sporting events, where the analysis would involve consumption of third party data.
 
 In either case, data processing is assumed to take place 'behind the firewall', where it can be transferred relatively easily across corporate networks or aggregated in a data warehouse. Less consideration is given to scenarios where large, varied, or rapidly changing data is made publicly available under an open license for reuse by a wide range of consumers. The first challenge in such cases, before any processing/analysis can take place, is to distribute the data. The limited network connectivity available for accessing large data sets may mean that a more conservative definition/quantification of Big Data is required when considering publication of 'Big Open Data'. To put it another way, the challenges of 'bigness' apply to smaller data sets in an open publication scenario than they do in a bounded, enterprise setting. For example, it may be trivial to transport gigabytes of data across an internal network, but publishing the same data volume on the public Web for anyone to access would likely require special measures to be taken in order to be feasible. It is these special measures which are the focus of this guide.
 
@@ -380,8 +380,11 @@ All **incoming** data transfer: $0.000 per GB
 
 ## References
 
-[WhiteHadoopSmallFiles]:		http://blog.cloudera.com/blog/2009/02/the-small-files-problem/	"The Small Files Problem"
+[Douglas2001]:	Douglas, Laney. "3D Data Management: Controlling Data Volume, Velocity and Variety". Gartner. Retrieved 6 February 2001. http://blogs.gartner.com/doug-laney/files/2012/01/ad949-3D-Data-Management-Controlling-Data-Volume-Velocity-and-Variety.pdf 
+[WhiteHadoopSmallFiles]: http://blog.cloudera.com/blog/2009/02/the-small-files-problem/	"The Small Files Problem"
 [YahooHadoopAntiPatterns]:	http://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-anti-patterns-465.html	"Apache Hadoop: Best Practices and Anti-Patterns"
 [LDBook]:http://linkeddatabook.com/editions/1.0/#htoc4 "Linked Data: Evolving the Web into a Global Data Space"
+
+
 
 ## Appendix
