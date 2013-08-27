@@ -4,9 +4,41 @@
 *The Open Data Institute
 
 
-## Executive Summary
+## Abstract
 
 While much has been written on the subject of Big Data, the majority assumes application and exploitation of proprietary data sets in enterprise settings. Little consideration has been given to how openly-licensed Big Data may be widely distributed over the public Internet, and the challenges this may pose. This guide presents several case studies of Big Data published under open licenses [check the licenses are solid] that highlight different approaches that may be taken, before exploring distribution mechanisms and emerging best practices for publishing 'Big Open Data'. Guidance is provided covering topics such as file formats, data partitioning, compression, and inclusion of metadata. The guide concludes with examination of various data hosting/publishing platforms and associated costs.
+
+## Executive Summary
+In recent years Big Data gained significant coverage, but usually assumes proprietary data sets in enterprise settings. This guide is one of the first that explores the intersection of Big and Open Data and its practicalities. 
+
+We explain different approaches that tackle the challenge of how to distribute large data set over the public Internet. The **four case studies** are:
+
+1. The [1,000 Genome project](http://www.1000genomes.org/data#DataAccess) with an extreme size of 260 terabytes, using a proprietary variant on FTP.
+2. The Tiny Images data set, which can be accessed via a conventional hyperlink to download these files over HTTP.
+3. The BioTorrents project provides a platform allowing scientists to share data via the BitTorrent peer-to-peer file sharing protocol.
+4. Researchers at the [Measurement Lab (M-Lab)](http://www.measurementlab.net/), who publish over 747Tb of data under a CCZero licence.
+
+Some **principles** of publishing Open Data can be directly applied to Big Data:
+
+1. Understanding your Audience: For example, by applying for an [Open Data Certificate](http://certificates.theodi.org/) for a particular data set.
+2. Understanding your Data: What is the nature of the data in terms of, for example, the "three Vs"?
+3. Understanding your Resources: For example, what do you need to consider for the first release vs updates?
+
+In many cases it is desirable, and much more practical, to publish Big Data in **small fragments**. We explain different *compression formats*, *sharding/partitioning* complete database dumps and different *distribution formats*.
+
+Cost for **hosting programmes and platforms** have, and continued to, decrease. An example of the popular *Amazon S3* service is in the table below. However, if you are a public institution you may qualify for *free hosting programmes*.
+
+
+| size | no. of full downloads | cost per month (as of June 2013) |
+|---|---|---|
+|  |  |All prices based on the region EU (Ireland). |
+|10 GB | 10 times | ~ $11 |
+|10 GB | 1000 times | ~ $1319 |
+|1 TB | 10 times | ~ $1456 |
+
+Lastly, it is important that you publish a minimum of metadata that explains your open data. This includes a *licence*, its *provenance* and some *contact information* for users.
+
+
 
 
 ## Introduction: from Big Data to Big Open Data
@@ -79,14 +111,16 @@ BioTorrents provides a rich case study of using BitTorrent for data distribution
 
 ### Measurement Lab
 
-Google's M-Lab (http://www.measurementlab.net/) publishes over 747Tb of data under CCZero and they get about 430Gb of uncompressed data a day.
+The [Measurement Lab (M-Lab)](http://www.measurementlab.net/) publishes over 747Tb of data under CCZero and they get about 430Gb of uncompressed data a day.
 
 
 
 
-## Publishing Big Open Data
+## 2. Publishing Big Open Data
 
-### Understanding your Audience
+### 2.1 General considerations
+
+#### 2.1.1 Understanding your Audience
 
 Technical considerations, such as the nature of the data and the resources available to data consumers, will shape many decisions when publishing big open data. Answering the following questions may help in understanding the needs of the target audience for the data:
 
@@ -103,11 +137,20 @@ Keeping the user in mind also ought to guide all other aspects of publishing, su
 Further guidance on these broader aspects of open data publishing can be obtained by applying for an [Open Data Certificate](http://certificates.theodi.org/) for a particular data set.
 
 
-### Understanding your Data
+#### 2.1.2 Understanding your Data
 
 As the case studies above illustrate, there is great variety in the methods used for publication of Big Open Data. Before exploring the most appropriate methods for a particular data set it is critical to consider the nature of the data itself, and how this may influence the choice of publication mechanism.
 
 If the data to be published changes rarely, or the intention is to simply publish static, historic snapshots of the data, then the data dump techniques described in the section below on *Publishing Data Dumps* will be most suitable. Conversely, if the data to be published has great *variety*, changes regularly (*velocity*), or is required by consumers in near real-time, the *Publishing Many Small Data Fragments* and *Publishing Streaming Data* section below will likely be of greatest value.
+
+#### 2.1.3. Understanding your Resources
+A list of questions you might consider:
+
+* How many hours are required to publish it the first time?
+* How many hours are required to maintain it?
+* How many hours are required to add new data streams?
+* How many hours are required to add new data sets?
+
 
 
 ### Publishing Big Open Data in Small Fragments
@@ -117,7 +160,7 @@ If the data to be published changes rarely, or the intention is to simply publis
 In many cases, publishing large data dumps alone is undesirable, as this may limit the usability of the data for downstream consumers. For example, consumers may wish to:
 
 * inspect portions of the data before gathering more
-* download only a portion of the data; the portion required may not be easly predicted and may vary between consumers, making it hard to cater for this requirement using data dumps (see also the section on *Partitioning* below)
+* download only a portion of the data; the portion required may not be easily predicted and may vary between consumers, making it hard to cater for this requirement using data dumps (see also the section on *Partitioning* below)
 * regularly reharvest sub-sets of the data that change frequently (i.e. high velocity data)
 
 To give an example, horizontal e-commerce sites such as Amazon.com or Tesco.com may have a wide variety of data, such as product information across multiple vertical segments, product reviews, pricing information, and stock levels. Each of these may change at a different rate, while individual downstream consumers may want access to different sub-sets of the data.
